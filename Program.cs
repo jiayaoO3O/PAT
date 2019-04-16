@@ -98,67 +98,135 @@ namespace PAT
 
         //1011 World Cup Betting
         //https://pintia.cn/problem-sets/994805342720868352/problems/994805504927186944
-        static void Main(string[] args)
+        // static void Main(string[] args)
+        // {
+        //     string[] teams1 = System.Console.ReadLine().Split();
+        //     string[] teams2 = System.Console.ReadLine().Split();
+        //     string[] teams3 = System.Console.ReadLine().Split();
+        //     string[] WTL = { "W", "T", "L" };
+        //     double[] t1 = new double[teams1.Length];
+        //     double[] t2 = new double[teams2.Length];
+        //     double[] t3 = new double[teams3.Length];
+        //     for (int i = 0; i < t1.Length; i++)
+        //     {
+        //         t1[i] = double.Parse(teams1[i]);
+        //         t2[i] = double.Parse(teams2[i]);
+        //         t3[i] = double.Parse(teams3[i]);
+        //     }
+        //     double max = 0;
+        //     int maxindex = 0;
+        //     double socre = 1;
+        //     for (int i = 0; i < t1.Length; i++)
+        //     {
+        //         if (t1[i] > max)
+        //         {
+        //             max = t1[i];
+        //             maxindex = i;
+        //         }
+        //     }
+        //     Console.Write(WTL[maxindex] + " ");
+        //     socre *= max;
+        //     max = 0;
+        //     for (int i = 0; i < t2.Length; i++)
+        //     {
+        //         if (t2[i] > max)
+        //         {
+        //             max = t2[i];
+        //             maxindex = i;
+        //         }
+        //     }
+        //     Console.Write(WTL[maxindex] + " ");
+        //     socre *= max;
+        //     max = 0;
+        //     for (int i = 0; i < t3.Length; i++)
+        //     {
+        //         if (t3[i] > max)
+        //         {
+        //             max = t3[i];
+        //             maxindex = i;
+        //         }
+        //     }
+        //     Console.Write(WTL[maxindex] + " ");
+        //     socre *= max;
+        //     socre = socre * 0.65 * 2 - 2;
+        //     Console.Write(socre.ToString("0.00"));
+        //     Console.Read();
+        // }
+
+        //1015 Reversible Primes
+        //https://pintia.cn/problem-sets/994805342720868352/problems/994805495863296000
+        public static bool IsPrime(int input)
         {
-            string[] teams1 = System.Console.ReadLine().Split();
-            string[] teams2 = System.Console.ReadLine().Split();
-            string[] teams3 = System.Console.ReadLine().Split();
-            string[] WTL = { "W", "T", "L" };
-            double[] t1 = new double[teams1.Length];
-            double[] t2 = new double[teams2.Length];
-            double[] t3 = new double[teams3.Length];
-            for (int i = 0; i < t1.Length; i++)
+            if (input <= 1)
             {
-                t1[i] = double.Parse(teams1[i]);
-                t2[i] = double.Parse(teams2[i]);
-                t3[i] = double.Parse(teams3[i]);
+                return false;
             }
-            double max = 0;
-            int maxindex = 0;
-            double socre = 1;
-            for (int i = 0; i < t1.Length; i++)
+            for (int i = 2; i < input; i++)
             {
-                if (t1[i] > max)
+                if (input % i == 0)
                 {
-                    max = t1[i];
-                    maxindex = i;
+                    return false;
                 }
             }
-            Console.Write(WTL[maxindex] + " ");
-            socre *= max;
-            max = 0;
-            for (int i = 0; i < t2.Length; i++)
+            return true;
+        }
+        public static int Reverse(int prime, int radix)
+        {
+            int n = prime;
+            int result = 0;
+            while (n != 0)
             {
-                if (t2[i] > max)
+                result = result * radix + (n % radix);
+                n /= radix;
+            }
+            return result;
+        }
+        public static void Main()
+        {
+            string line;
+            int N = 0;
+            int D = 0;
+            while ((line = System.Console.ReadLine()) != null)
+            {
+                string[] tokens = line.Split();
+                if (int.Parse(tokens[0]) < 0)
                 {
-                    max = t2[i];
-                    maxindex = i;
+                    break;
+                }
+                else
+                {
+                    N = int.Parse(tokens[0]);
+                    D = int.Parse(tokens[1]);
+                    if (!IsPrime(Reverse(N, D)) || !IsPrime(int.Parse(tokens[0])))
+                    {
+                        Console.WriteLine("No");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Yes");
+                    }
                 }
             }
-            Console.Write(WTL[maxindex] + " ");
-            socre *= max;
-            max = 0;
-            for (int i = 0; i < t3.Length; i++)
-            {
-                if (t3[i] > max)
-                {
-                    max = t3[i];
-                    maxindex = i;
-                }
-            }
-            Console.Write(WTL[maxindex] + " ");
-            socre *= max;
-            socre = socre * 0.65 * 2 - 2;
-            Console.Write(socre.ToString("0.00"));
-            Console.Read();
         }
         // static void Main(string[] args)
         // {
         //     string[] tokens = System.Console.ReadLine().Split();
         //     Console.Read();
         // }
-
-
-
+        // public static void Main()
+        // {
+        //     string line;
+        //     while ((line = System.Console.ReadLine()) != null)
+        //     {
+        //         string[] tokens = line.Split();
+        //         if (true)
+        //         {
+        //             break;
+        //         }
+        //         else
+        //         {
+        //         }
+        //     }
+        // }
     }
 }
