@@ -67,32 +67,89 @@ namespace PAT
         //https://pintia.cn/problem-sets/994805342720868352/problems/994805511923286016
         //这一题真尼玛坑,第一个N是指接下来会有的楼层的数量而不是楼层本身.
         //所以3 2 3 1是指有3个楼层,分别是2楼,3楼,1楼.
+        // static void Main(string[] args)
+        // {
+        //     string[] tokens = System.Console.ReadLine().Split();
+        //     int result = 0;
+        //     int before = 0;
+        //     int now = 0;
+        //     int[] floors = new int[int.Parse(tokens[0])];
+        //     for (int i = 1; i < tokens.Length; i++)
+        //     {
+        //         floors[i - 1] = int.Parse(tokens[i]);
+        //     }
+        //     for (int i = 0; i < floors.Length; i++)
+        //     {
+        //         now = floors[i];
+        //         if (now > before)
+        //         {
+        //             result += (now - before) * 6 + 5;
+        //             before = now;
+        //         }
+        //         else
+        //         {
+        //             result += (before - now) * 4 + 5;
+        //             before = now;
+        //         }
+        //     }
+        //     Console.WriteLine(result);
+        //     Console.Read();
+        // }
+
+        //1011 World Cup Betting
+        //https://pintia.cn/problem-sets/994805342720868352/problems/994805504927186944
         static void Main(string[] args)
         {
-            string[] tokens = System.Console.ReadLine().Split();
-            int result = 0;
-            int before = 0;
-            int now = 0;
-            int[] floors = new int[int.Parse(tokens[0])];
-            for (int i = 1; i < tokens.Length; i++)
+            string[] teams1 = System.Console.ReadLine().Split();
+            string[] teams2 = System.Console.ReadLine().Split();
+            string[] teams3 = System.Console.ReadLine().Split();
+            string[] WTL = { "W", "T", "L" };
+            double[] t1 = new double[teams1.Length];
+            double[] t2 = new double[teams2.Length];
+            double[] t3 = new double[teams3.Length];
+            for (int i = 0; i < t1.Length; i++)
             {
-                floors[i - 1] = int.Parse(tokens[i]);
+                t1[i] = double.Parse(teams1[i]);
+                t2[i] = double.Parse(teams2[i]);
+                t3[i] = double.Parse(teams3[i]);
             }
-            for (int i = 0; i < floors.Length; i++)
+            double max = 0;
+            int maxindex = 0;
+            double socre = 1;
+            for (int i = 0; i < t1.Length; i++)
             {
-                now = floors[i];
-                if (now > before)
+                if (t1[i] > max)
                 {
-                    result += (now - before) * 6 + 5;
-                    before = now;
-                }
-                else
-                {
-                    result += (before - now) * 4 + 5;
-                    before = now;
+                    max = t1[i];
+                    maxindex = i;
                 }
             }
-            Console.WriteLine(result);
+            Console.Write(WTL[maxindex] + " ");
+            socre *= max;
+            max = 0;
+            for (int i = 0; i < t2.Length; i++)
+            {
+                if (t2[i] > max)
+                {
+                    max = t2[i];
+                    maxindex = i;
+                }
+            }
+            Console.Write(WTL[maxindex] + " ");
+            socre *= max;
+            max = 0;
+            for (int i = 0; i < t3.Length; i++)
+            {
+                if (t3[i] > max)
+                {
+                    max = t3[i];
+                    maxindex = i;
+                }
+            }
+            Console.Write(WTL[maxindex] + " ");
+            socre *= max;
+            socre = socre * 0.65 * 2 - 2;
+            Console.Write(socre.ToString("0.00"));
             Console.Read();
         }
         // static void Main(string[] args)
