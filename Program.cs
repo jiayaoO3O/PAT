@@ -6,6 +6,7 @@ namespace PAT
     class Program
     {
         //1001 A+B Format
+        //https://pintia.cn/problem-sets/994805342720868352/problems/994805528788582400
         // static void Main(string[] args)
         // {
         //     string[] input = Console.ReadLine().Split(' ');
@@ -27,6 +28,7 @@ namespace PAT
         // }
 
         //1005 Spell It Right 
+        //https://pintia.cn/problem-sets/994805342720868352/problems/994805519074574336
         // static void Main(string[] args)
         // {
         //     //int n = Convert.ToInt32(System.Console.ReadLine());
@@ -62,6 +64,7 @@ namespace PAT
         // }
 
         //1008 Elevator
+        //https://pintia.cn/problem-sets/994805342720868352/problems/994805511923286016
         //这一题真尼玛坑,第一个N是指接下来会有的楼层的数量而不是楼层本身.
         //所以3 2 3 1是指有3个楼层,分别是2楼,3楼,1楼.
         static void Main(string[] args)
