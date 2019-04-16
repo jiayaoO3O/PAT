@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace PAT
 {
@@ -155,64 +154,133 @@ namespace PAT
 
         //1015 Reversible Primes
         //https://pintia.cn/problem-sets/994805342720868352/problems/994805495863296000
-        public static bool IsPrime(int input)
+        // public static bool IsPrime(int input)
+        // {
+        //     if (input <= 1)
+        //     {
+        //         return false;
+        //     }
+        //     for (int i = 2; i < input; i++)
+        //     {
+        //         if (input % i == 0)
+        //         {
+        //             return false;
+        //         }
+        //     }
+        //     return true;
+        // }
+        // public static int Reverse(int prime, int radix)
+        // {
+        //     int n = prime;
+        //     int result = 0;
+        //     while (n != 0)
+        //     {
+        //         result = result * radix + (n % radix);
+        //         n /= radix;
+        //     }
+        //     return result;
+        // }
+        // public static void Main()
+        // {
+        //     string line;
+        //     int N = 0;
+        //     int D = 0;
+        //     while ((line = System.Console.ReadLine()) != null)
+        //     {
+        //         string[] tokens = line.Split();
+        //         if (int.Parse(tokens[0]) < 0)
+        //         {
+        //             break;
+        //         }
+        //         else
+        //         {
+        //             N = int.Parse(tokens[0]);
+        //             D = int.Parse(tokens[1]);
+        //             if (!IsPrime(Reverse(N, D)) || !IsPrime(int.Parse(tokens[0])))
+        //             {
+        //                 Console.WriteLine("No");
+        //             }
+        //             else
+        //             {
+        //                 Console.WriteLine("Yes");
+        //             }
+        //         }
+        //     }
+        // }
+        // public static void Main()
+        // {
+        //     string line;
+        //     while ((line = System.Console.ReadLine()) != null)
+        //     {
+        //         string[] tokens = line.Split();
+        //         if (true)
+        //         {
+        //             break;
+        //         }
+        //         else
+        //         {
+        //         }
+        //     }
+        // }
+
+        //1019 General Palindromic Number
+        //https://pintia.cn/problem-sets/994805342720868352/problems/994805487143337984
+        public static bool IsPalindromic(int[] input, int index)
         {
-            if (input <= 1)
+            for (int i = 0; i <= index / 2; i++)
             {
-                return false;
-            }
-            for (int i = 2; i < input; i++)
-            {
-                if (input % i == 0)
+                if (input[i] != input[index - 1 - i])
                 {
                     return false;
                 }
             }
             return true;
         }
-        public static int Reverse(int prime, int radix)
+        static void Main(string[] args)
         {
-            int n = prime;
-            int result = 0;
-            while (n != 0)
-            {
-                result = result * radix + (n % radix);
-                n /= radix;
-            }
-            return result;
-        }
-        public static void Main()
-        {
-            string line;
-            int N = 0;
-            int D = 0;
+            string line = "";
             while ((line = System.Console.ReadLine()) != null)
             {
                 string[] tokens = line.Split();
-                if (int.Parse(tokens[0]) < 0)
+                int N = int.Parse(tokens[0]);
+                int b = int.Parse(tokens[1]);
+                if (N == 0)
                 {
-                    break;
+                    Console.WriteLine("Yes");
+                    Console.WriteLine("0");
                 }
                 else
                 {
-                    N = int.Parse(tokens[0]);
-                    D = int.Parse(tokens[1]);
-                    if (!IsPrime(Reverse(N, D)) || !IsPrime(int.Parse(tokens[0])))
+                    int[] n = new int[40];
+                    int index = 0;
+                    while (N != 0)
                     {
-                        Console.WriteLine("No");
+                        n[index] = N % b;
+                        N /= b;
+                        index++;
+                    }
+                    if (IsPalindromic(n, index))
+                    {
+                        Console.WriteLine("Yes");
                     }
                     else
                     {
-                        Console.WriteLine("Yes");
+                        Console.WriteLine("No");
+                    }
+                    for (int i = index - 1; i >= 0; i--)
+                    {
+                        if (i > 0)
+                        {
+                            Console.Write(n[i] + " ");
+                        }
+                        else
+                        {
+                            Console.WriteLine(n[i]);
+                        }
                     }
                 }
             }
         }
-        // static void Main(string[] args)
-        // {
-        //     string[] tokens = System.Console.ReadLine().Split();
-        //     Console.Read();
-        // }
         // public static void Main()
         // {
         //     string line;
