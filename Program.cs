@@ -59,7 +59,6 @@ namespace PAT
         //             Console.Write(" ");
         //         }
         //     }
-        //     Console.Read();
         // }
 
         //1008 Elevator
@@ -92,7 +91,6 @@ namespace PAT
         //         }
         //     }
         //     Console.WriteLine(result);
-        //     Console.Read();
         // }
 
         //1011 World Cup Betting
@@ -207,21 +205,6 @@ namespace PAT
         //         }
         //     }
         // }
-        // public static void Main()
-        // {
-        //     string line;
-        //     while ((line = System.Console.ReadLine()) != null)
-        //     {
-        //         string[] tokens = line.Split();
-        //         if (true)
-        //         {
-        //             break;
-        //         }
-        //         else
-        //         {
-        //         }
-        //     }
-        // }
 
         //1019 General Palindromic Number
         //https://pintia.cn/problem-sets/994805342720868352/problems/994805487143337984
@@ -281,6 +264,103 @@ namespace PAT
                 }
             }
         }
+
+        //1023 Have Fun with Numbers
+        //https://pintia.cn/problem-sets/994805342720868352/problems/994805478658260992
+        public static bool Contains(char[] input, char index)
+        {
+            for (int i = 0; i < input.Length; i++)
+            {
+                if (input[i] == index)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        public static int[] DoubleIntegerArray(int[] num)
+        {
+            int flag = 0;
+            int length = num.Length - 1;
+            while (num[length] != -1)
+            {
+                if (num[length] * 2 >= 10)
+                {
+                    num[length] = num[length] * 2 % 10 + flag;
+                    flag = 1;
+                }
+                else
+                {
+                    num[length] = num[length] * 2 % 10 + flag;
+                    flag = 0;
+                }
+                length--;
+            }
+            if (flag == 1)
+            {
+                num[length] = 1;
+            }
+            return num;
+        }
+        public static bool FrequencyIsEmpty(int[] frequency)
+        {
+            foreach (var fre in frequency)
+            {
+                if (fre != 0)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        public static void Main()
+        {
+            char[] line = System.Console.ReadLine().ToCharArray();
+            int[] num = new int[22];
+            int[] frequency = new int[10];
+            //用来判断新数字出来的频率和原数字是否一致.如果程序结束后frequency全为0则频率一致.
+            for (int i = 0; i < num.Length; i++)
+            {
+                //将数组置为-1;
+                num[i] = -1;
+            }
+            for (int i = 0; i < line.Length; i++)
+            {
+                num[num.Length - line.Length + i] = line[i] - '0';//char转int要-48或者-'0'.
+                frequency[line[i] - '0']++;//记录对应位置的频率.
+            }
+            num = DoubleIntegerArray(num);
+            for (int i = num.Length - 1; num[i] != -1; i--)
+            {
+                if (!Contains(line, (char)(num[i] + 48)))
+                {
+                    //如果出现了不存在的数字,直接NO
+                    Console.WriteLine("No");
+                    break;
+                }
+                frequency[num[i]]--;
+                if (num[i - 1] == -1)
+                {
+                    if (FrequencyIsEmpty(frequency))
+                    {
+                        Console.WriteLine("Yes");
+                    }
+                    else
+                    {
+                        Console.WriteLine("No");
+                    }
+                }
+            }
+            for (int i = 0; i < num.Length; i++)
+            {
+                if (num[i] != -1)
+                {
+                    Console.Write(num[i]);
+                }
+            }
+            Console.WriteLine();
+        }
+
         // public static void Main()
         // {
         //     string line;
