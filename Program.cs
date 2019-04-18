@@ -363,42 +363,112 @@ namespace PAT
 
         //1027 Colors in Mars
         //https://pintia.cn/problem-sets/994805342720868352/problems/994805470349344768
-        public static string ConvertDecToTarget(int dec, int target, int length)
+        // public static string ConvertDecToTarget(int dec, int target, int length)
+        // {
+        //     char[] result = new char[length];
+        //     for (int i = 0; i < length; i++)
+        //     {
+        //         result[i] = '0';
+        //     }
+        //     int n = dec;
+        //     int index = length - 1;
+        //     while (n != 0)
+        //     {
+        //         if (n % target >= 10)
+        //         {
+        //             result[index--] = (char)(n % target + 55);
+        //         }
+        //         else
+        //         {
+        //             result[index--] = (char)(n % target + 48);
+        //         }
+        //         n /= target;
+        //     }
+        //     return new string(result);
+        // }
+        // public static void Main()
+        // {
+        //     string[] tokens = System.Console.ReadLine().Split();
+        //     int red = int.Parse(tokens[0]);
+        //     int green = int.Parse(tokens[1]);
+        //     int blue = int.Parse(tokens[2]);
+        //     string result = "#";
+        //     result += ConvertDecToTarget(red, 13, 2);
+        //     result += ConvertDecToTarget(green, 13, 2);
+        //     result += ConvertDecToTarget(blue, 13, 2);
+        //     Console.WriteLine(result);
+        // }
+
+        //1035 Password
+        //https://pintia.cn/problem-sets/994805342720868352/problems/994805454989803520
+        public static string ChangePassword(char[] password)
         {
-            char[] result = new char[length];
-            for (int i = 0; i < length; i++)
+            for (int i = 0; i < password.Length; i++)
             {
-                result[i] = '0';
-            }
-            int n = dec;
-            int index = length - 1;
-            while (n != 0)
-            {
-                if (n % target >= 10)
+                if (password[i] == '0')
                 {
-                    result[index--] = (char)(n % target + 55);
+                    password[i] = '%';
                 }
-                else
+                if (password[i] == '1')
                 {
-                    result[index--] = (char)(n % target + 48);
+                    password[i] = '@';
                 }
-                n /= target;
+                if (password[i] == 'l')
+                {
+                    password[i] = 'L';
+                }
+                if (password[i] == 'O')
+                {
+                    password[i] = 'o';
+                }
             }
-            return new string(result);
+            return new string(password);
         }
         public static void Main()
         {
-            string[] tokens = System.Console.ReadLine().Split();
-            int red = int.Parse(tokens[0]);
-            int green = int.Parse(tokens[1]);
-            int blue = int.Parse(tokens[2]);
-            string result = "#";
-            result += ConvertDecToTarget(red, 13, 2);
-            result += ConvertDecToTarget(green, 13, 2);
-            result += ConvertDecToTarget(blue, 13, 2);
-            Console.WriteLine(result);
+            int userCount = int.Parse(System.Console.ReadLine());
+            int modifiedCount = 0;
+            bool[] modifiedInfo = new bool[userCount];
+            string[] users = new string[userCount];
+            string[] passwords = new string[userCount];
+            for (int i = 0; i < userCount; i++)
+            {
+                string[] line = System.Console.ReadLine().Split();
+                users[i] = line[0];
+                passwords[i] = line[1];
+            }
+            for (int i = 0; i < userCount; i++)
+            {
+                if (!(ChangePassword(passwords[i].ToCharArray()) == passwords[i]))
+                {
+                    modifiedInfo[i] = true;
+                    passwords[i] = ChangePassword(passwords[i].ToCharArray());
+                    modifiedCount++;
+                }
+            }
+            if (modifiedCount == 0)
+            {
+                if (userCount != 1)
+                {
+                    Console.WriteLine("There are " + userCount + " accounts and no account is modified");
+                }
+                else
+                {
+                    Console.WriteLine("There is " + userCount + " account and no account is modified");
+                }
+            }
+            else
+            {
+                Console.WriteLine(modifiedCount);
+                for (int i = 0; i < userCount; i++)
+                {
+                    if (modifiedInfo[i])
+                    {
+                        Console.WriteLine(users[i] + " " + passwords[i]);
+                    }
+                }
+            }
         }
-
         // public static void Main()
         // {
         //     string line;

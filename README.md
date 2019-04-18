@@ -10,4 +10,5 @@
 | 1019 | [General Palindromic Number](https://jiayaoo3o.github.io/2019/04/17/1019-General-Palindromic-Number/) |
 | 1023 | [Have Fun with Numbers](https://jiayaoo3o.github.io/2019/04/17/1023-Have-Fun-with-Numbers/) |
 | 1027 | [Colors in Mars](https://jiayaoo3o.github.io/2019/04/18/1027-Colors-in-Mars/) |
+| 1035 | [Password](https://jiayaoo3o.github.io/2019/04/18/1035-Password/) |
 
