@@ -1,4 +1,4 @@
-# PAT甲级题解C#版
+# PAT甲级题解C#版,持续更新中.
 
 | 题号 |                             题目                             |
 | :--: | :----------------------------------------------------------: |
@@ -11,4 +11,5 @@
 | 1023 | [Have Fun with Numbers](https://jiayaoo3o.github.io/2019/04/17/1023-Have-Fun-with-Numbers/) |
 | 1027 | [Colors in Mars](https://jiayaoo3o.github.io/2019/04/18/1027-Colors-in-Mars/) |
 | 1035 | [Password](https://jiayaoo3o.github.io/2019/04/18/1035-Password/) |
+| 1041 | [Be Unique](https://jiayaoo3o.github.io/2019/04/19/1041-Be-Unique/) |
 
