@@ -208,157 +208,195 @@ namespace PAT
 
         //1019 General Palindromic Number
         //https://pintia.cn/problem-sets/994805342720868352/problems/994805487143337984
-        public static bool IsPalindromic(int[] input, int index)
-        {
-            for (int i = 0; i <= index / 2; i++)
-            {
-                if (input[i] != input[index - 1 - i])
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-        static void Main(string[] args)
-        {
-            string line = "";
-            while ((line = System.Console.ReadLine()) != null)
-            {
-                string[] tokens = line.Split();
-                int N = int.Parse(tokens[0]);
-                int b = int.Parse(tokens[1]);
-                if (N == 0)
-                {
-                    Console.WriteLine("Yes");
-                    Console.WriteLine("0");
-                }
-                else
-                {
-                    int[] n = new int[40];
-                    int index = 0;
-                    while (N != 0)
-                    {
-                        n[index] = N % b;
-                        N /= b;
-                        index++;
-                    }
-                    if (IsPalindromic(n, index))
-                    {
-                        Console.WriteLine("Yes");
-                    }
-                    else
-                    {
-                        Console.WriteLine("No");
-                    }
-                    for (int i = index - 1; i >= 0; i--)
-                    {
-                        if (i > 0)
-                        {
-                            Console.Write(n[i] + " ");
-                        }
-                        else
-                        {
-                            Console.WriteLine(n[i]);
-                        }
-                    }
-                }
-            }
-        }
+        // public static bool IsPalindromic(int[] input, int index)
+        // {
+        //     for (int i = 0; i <= index / 2; i++)
+        //     {
+        //         if (input[i] != input[index - 1 - i])
+        //         {
+        //             return false;
+        //         }
+        //     }
+        //     return true;
+        // }
+        // static void Main(string[] args)
+        // {
+        //     string line = "";
+        //     while ((line = System.Console.ReadLine()) != null)
+        //     {
+        //         string[] tokens = line.Split();
+        //         int N = int.Parse(tokens[0]);
+        //         int b = int.Parse(tokens[1]);
+        //         if (N == 0)
+        //         {
+        //             Console.WriteLine("Yes");
+        //             Console.WriteLine("0");
+        //         }
+        //         else
+        //         {
+        //             int[] n = new int[40];
+        //             int index = 0;
+        //             while (N != 0)
+        //             {
+        //                 n[index] = N % b;
+        //                 N /= b;
+        //                 index++;
+        //             }
+        //             if (IsPalindromic(n, index))
+        //             {
+        //                 Console.WriteLine("Yes");
+        //             }
+        //             else
+        //             {
+        //                 Console.WriteLine("No");
+        //             }
+        //             for (int i = index - 1; i >= 0; i--)
+        //             {
+        //                 if (i > 0)
+        //                 {
+        //                     Console.Write(n[i] + " ");
+        //                 }
+        //                 else
+        //                 {
+        //                     Console.WriteLine(n[i]);
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
 
         //1023 Have Fun with Numbers
         //https://pintia.cn/problem-sets/994805342720868352/problems/994805478658260992
-        public static bool Contains(char[] input, char index)
+        // public static bool Contains(char[] input, char index)
+        // {
+        //     for (int i = 0; i < input.Length; i++)
+        //     {
+        //         if (input[i] == index)
+        //         {
+        //             return true;
+        //         }
+        //     }
+        //     return false;
+        // }
+        // public static int[] DoubleIntegerArray(int[] num)
+        // {
+        //     int flag = 0;
+        //     int length = num.Length - 1;
+        //     while (num[length] != -1)
+        //     {
+        //         if (num[length] * 2 >= 10)
+        //         {
+        //             num[length] = num[length] * 2 % 10 + flag;
+        //             flag = 1;
+        //         }
+        //         else
+        //         {
+        //             num[length] = num[length] * 2 % 10 + flag;
+        //             flag = 0;
+        //         }
+        //         length--;
+        //     }
+        //     if (flag == 1)
+        //     {
+        //         num[length] = 1;
+        //     }
+        //     return num;
+        // }
+        // public static bool FrequencyIsEmpty(int[] frequency)
+        // {
+        //     foreach (var fre in frequency)
+        //     {
+        //         if (fre != 0)
+        //         {
+        //             return false;
+        //         }
+        //     }
+        //     return true;
+        // }
+        // public static void Main()
+        // {
+        //     char[] line = System.Console.ReadLine().ToCharArray();
+        //     int[] num = new int[22];
+        //     int[] frequency = new int[10];
+        //     //用来判断新数字出来的频率和原数字是否一致.如果程序结束后frequency全为0则频率一致.
+        //     for (int i = 0; i < num.Length; i++)
+        //     {
+        //         //将数组置为-1;
+        //         num[i] = -1;
+        //     }
+        //     for (int i = 0; i < line.Length; i++)
+        //     {
+        //         num[num.Length - line.Length + i] = line[i] - '0';//char转int要-48或者-'0'.
+        //         frequency[line[i] - '0']++;//记录对应位置的频率.
+        //     }
+        //     num = DoubleIntegerArray(num);
+        //     for (int i = num.Length - 1; num[i] != -1; i--)
+        //     {
+        //         if (!Contains(line, (char)(num[i] + 48)))
+        //         {
+        //             //如果出现了不存在的数字,直接NO
+        //             Console.WriteLine("No");
+        //             break;
+        //         }
+        //         frequency[num[i]]--;
+        //         if (num[i - 1] == -1)
+        //         {
+        //             if (FrequencyIsEmpty(frequency))
+        //             {
+        //                 Console.WriteLine("Yes");
+        //             }
+        //             else
+        //             {
+        //                 Console.WriteLine("No");
+        //             }
+        //         }
+        //     }
+        //     for (int i = 0; i < num.Length; i++)
+        //     {
+        //         if (num[i] != -1)
+        //         {
+        //             Console.Write(num[i]);
+        //         }
+        //     }
+        //     Console.WriteLine();
+        // }
+
+        //1027 Colors in Mars
+        //https://pintia.cn/problem-sets/994805342720868352/problems/994805470349344768
+        public static string ConvertDecToTarget(int dec, int target, int length)
         {
-            for (int i = 0; i < input.Length; i++)
+            char[] result = new char[length];
+            for (int i = 0; i < length; i++)
             {
-                if (input[i] == index)
-                {
-                    return true;
-                }
+                result[i] = '0';
             }
-            return false;
-        }
-        public static int[] DoubleIntegerArray(int[] num)
-        {
-            int flag = 0;
-            int length = num.Length - 1;
-            while (num[length] != -1)
+            int n = dec;
+            int index = length - 1;
+            while (n != 0)
             {
-                if (num[length] * 2 >= 10)
+                if (n % target >= 10)
                 {
-                    num[length] = num[length] * 2 % 10 + flag;
-                    flag = 1;
+                    result[index--] = (char)(n % target + 55);
                 }
                 else
                 {
-                    num[length] = num[length] * 2 % 10 + flag;
-                    flag = 0;
+                    result[index--] = (char)(n % target + 48);
                 }
-                length--;
+                n /= target;
             }
-            if (flag == 1)
-            {
-                num[length] = 1;
-            }
-            return num;
-        }
-        public static bool FrequencyIsEmpty(int[] frequency)
-        {
-            foreach (var fre in frequency)
-            {
-                if (fre != 0)
-                {
-                    return false;
-                }
-            }
-            return true;
+            return new string(result);
         }
         public static void Main()
         {
-            char[] line = System.Console.ReadLine().ToCharArray();
-            int[] num = new int[22];
-            int[] frequency = new int[10];
-            //用来判断新数字出来的频率和原数字是否一致.如果程序结束后frequency全为0则频率一致.
-            for (int i = 0; i < num.Length; i++)
-            {
-                //将数组置为-1;
-                num[i] = -1;
-            }
-            for (int i = 0; i < line.Length; i++)
-            {
-                num[num.Length - line.Length + i] = line[i] - '0';//char转int要-48或者-'0'.
-                frequency[line[i] - '0']++;//记录对应位置的频率.
-            }
-            num = DoubleIntegerArray(num);
-            for (int i = num.Length - 1; num[i] != -1; i--)
-            {
-                if (!Contains(line, (char)(num[i] + 48)))
-                {
-                    //如果出现了不存在的数字,直接NO
-                    Console.WriteLine("No");
-                    break;
-                }
-                frequency[num[i]]--;
-                if (num[i - 1] == -1)
-                {
-                    if (FrequencyIsEmpty(frequency))
-                    {
-                        Console.WriteLine("Yes");
-                    }
-                    else
-                    {
-                        Console.WriteLine("No");
-                    }
-                }
-            }
-            for (int i = 0; i < num.Length; i++)
-            {
-                if (num[i] != -1)
-                {
-                    Console.Write(num[i]);
-                }
-            }
-            Console.WriteLine();
+            string[] tokens = System.Console.ReadLine().Split();
+            int red = int.Parse(tokens[0]);
+            int green = int.Parse(tokens[1]);
+            int blue = int.Parse(tokens[2]);
+            string result = "#";
+            result += ConvertDecToTarget(red, 13, 2);
+            result += ConvertDecToTarget(green, 13, 2);
+            result += ConvertDecToTarget(blue, 13, 2);
+            Console.WriteLine(result);
         }
 
         // public static void Main()
