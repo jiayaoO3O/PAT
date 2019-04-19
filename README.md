@@ -12,4 +12,5 @@
 | 1027 | [Colors in Mars](https://jiayaoo3o.github.io/2019/04/18/1027-Colors-in-Mars/) |
 | 1035 | [Password](https://jiayaoo3o.github.io/2019/04/18/1035-Password/) |
 | 1041 | [Be Unique](https://jiayaoo3o.github.io/2019/04/19/1041-Be-Unique/) |
+| 1042 | [Shuffling Machine](https://jiayaoo3o.github.io/2019/04/19/1042-Shuffling-Machine/) |
 

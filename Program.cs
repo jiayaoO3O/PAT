@@ -472,27 +472,85 @@ namespace PAT
 
         //1041 Be Unique
         //https://pintia.cn/problem-sets/994805342720868352/problems/994805444361437184
+        // public static void Main()
+        // {
+        //     string[] tokens = System.Console.ReadLine().Split();
+        //     int count = int.Parse(tokens[0]);
+        //     int[] numbers = new int[count];
+        //     int[] frequency = new int[100000];
+        //     for (int i = 0; i < count; i++)
+        //     {
+        //         numbers[i] = int.Parse(tokens[i + 1]);
+        //         frequency[numbers[i]]++;
+        //     }
+        //     for (int i = 0; i < count; i++)
+        //     {
+        //         if (frequency[numbers[i]] == 1)
+        //         {
+        //             Console.WriteLine(numbers[i]);
+        //             break;
+        //         }
+        //         if (i == count - 1)
+        //         {
+        //             Console.WriteLine("None");
+        //         }
+        //     }
+        // }
+
+        //1042 Shuffling Machine
+        //https://pintia.cn/problem-sets/994805342720868352/problems/994805442671132672
+        public static string[] ShufflingMachines(int[] orders, string[] cards)
+        {
+            string[] result = new string[cards.Length];
+            for (int i = 0; i < orders.Length; i++)
+            {
+                result[orders[i] - 1] = cards[i];
+            }
+            return result;
+        }
         public static void Main()
         {
+            int repeatTimes = int.Parse(System.Console.ReadLine());
             string[] tokens = System.Console.ReadLine().Split();
-            int count = int.Parse(tokens[0]);
-            int[] numbers = new int[count];
-            int[] frequency = new int[100000];
-            for (int i = 0; i < count; i++)
+            int[] orders = new int[tokens.Length];
+            string[] cards = new string[54];
+            for (int i = 0; i < 54; i++)
             {
-                numbers[i] = int.Parse(tokens[i + 1]);
-                frequency[numbers[i]]++;
-            }
-            for (int i = 0; i < count; i++)
-            {
-                if (frequency[numbers[i]] == 1)
+                orders[i] = int.Parse(tokens[i]);
+                if (i < 13)
                 {
-                    Console.WriteLine(numbers[i]);
-                    break;
+                    cards[i] = "S" + (i + 1).ToString();
                 }
-                if (i == count - 1)
+                if (i >= 13 && i < 26)
                 {
-                    Console.WriteLine("None");
+                    cards[i] = "H" + (i % 13 + 1).ToString();
+                }
+                if (i >= 26 && i < 39)
+                {
+                    cards[i] = "C" + (i % 13 + 1).ToString();
+                }
+                if (i >= 39 && i < 52)
+                {
+                    cards[i] = "D" + (i % 13 + 1).ToString();
+                }
+                if (i >= 52)
+                {
+                    cards[i] = "J" + (i % 13 + 1).ToString();
+                }
+            }
+            for (int i = 0; i < repeatTimes; i++)
+            {
+                cards = ShufflingMachines(orders, cards);
+            }
+            for (int i = 0; i < cards.Length; i++)
+            {
+                if (i != cards.Length - 1)
+                {
+                    Console.Write(cards[i] + " ");
+                }
+                else
+                {
+                    Console.WriteLine(cards[i]);
                 }
             }
         }
