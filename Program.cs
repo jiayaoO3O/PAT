@@ -1,5 +1,4 @@
 ﻿using System;
-
 namespace PAT
 {
     class Program
@@ -499,61 +498,88 @@ namespace PAT
 
         //1042 Shuffling Machine
         //https://pintia.cn/problem-sets/994805342720868352/problems/994805442671132672
-        public static string[] ShufflingMachines(int[] orders, string[] cards)
+        // public static string[] ShufflingMachines(int[] orders, string[] cards)
+        // {
+        //     string[] result = new string[cards.Length];
+        //     for (int i = 0; i < orders.Length; i++)
+        //     {
+        //         result[orders[i] - 1] = cards[i];
+        //     }
+        //     return result;
+        // }
+        // public static void Main()
+        // {
+        //     int repeatTimes = int.Parse(System.Console.ReadLine());
+        //     string[] tokens = System.Console.ReadLine().Split();
+        //     int[] orders = new int[tokens.Length];
+        //     string[] cards = new string[54];
+        //     for (int i = 0; i < 54; i++)
+        //     {
+        //         orders[i] = int.Parse(tokens[i]);
+        //         if (i < 13)
+        //         {
+        //             cards[i] = "S" + (i + 1).ToString();
+        //         }
+        //         if (i >= 13 && i < 26)
+        //         {
+        //             cards[i] = "H" + (i % 13 + 1).ToString();
+        //         }
+        //         if (i >= 26 && i < 39)
+        //         {
+        //             cards[i] = "C" + (i % 13 + 1).ToString();
+        //         }
+        //         if (i >= 39 && i < 52)
+        //         {
+        //             cards[i] = "D" + (i % 13 + 1).ToString();
+        //         }
+        //         if (i >= 52)
+        //         {
+        //             cards[i] = "J" + (i % 13 + 1).ToString();
+        //         }
+        //     }
+        //     for (int i = 0; i < repeatTimes; i++)
+        //     {
+        //         cards = ShufflingMachines(orders, cards);
+        //     }
+        //     for (int i = 0; i < cards.Length; i++)
+        //     {
+        //         if (i != cards.Length - 1)
+        //         {
+        //             Console.Write(cards[i] + " ");
+        //         }
+        //         else
+        //         {
+        //             Console.WriteLine(cards[i]);
+        //         }
+        //     }
+        // }
+
+        //1046 Shortest Distance
+        //https://pintia.cn/problem-sets/994805342720868352/problems/994805435700199424
+        public static int GetShortestDistance(int[] nodes, int beginNode, int endNode, int totalDistance)
         {
-            string[] result = new string[cards.Length];
-            for (int i = 0; i < orders.Length; i++)
-            {
-                result[orders[i] - 1] = cards[i];
-            }
-            return result;
+            int distance = beginNode > endNode ? nodes[beginNode - 1] - nodes[endNode - 1] : nodes[endNode - 1] - nodes[beginNode - 1];
+            return distance < (totalDistance - distance) ? distance : (totalDistance - distance);
         }
         public static void Main()
         {
-            int repeatTimes = int.Parse(System.Console.ReadLine());
             string[] tokens = System.Console.ReadLine().Split();
-            int[] orders = new int[tokens.Length];
-            string[] cards = new string[54];
-            for (int i = 0; i < 54; i++)
+            int nodesCount = int.Parse(tokens[0]);
+            int[] nodes = new int[nodesCount];
+            int totalDistance = 0;
+            for (int i = 0; i < nodes.Length; i++)
             {
-                orders[i] = int.Parse(tokens[i]);
-                if (i < 13)
-                {
-                    cards[i] = "S" + (i + 1).ToString();
-                }
-                if (i >= 13 && i < 26)
-                {
-                    cards[i] = "H" + (i % 13 + 1).ToString();
-                }
-                if (i >= 26 && i < 39)
-                {
-                    cards[i] = "C" + (i % 13 + 1).ToString();
-                }
-                if (i >= 39 && i < 52)
-                {
-                    cards[i] = "D" + (i % 13 + 1).ToString();
-                }
-                if (i >= 52)
-                {
-                    cards[i] = "J" + (i % 13 + 1).ToString();
-                }
+                nodes[i] = totalDistance;
+                totalDistance += int.Parse(tokens[i + 1]);
             }
-            for (int i = 0; i < repeatTimes; i++)
+            int pairsCount = int.Parse(Console.ReadLine());
+            for (int i = 0; i < pairsCount; i++)
             {
-                cards = ShufflingMachines(orders, cards);
-            }
-            for (int i = 0; i < cards.Length; i++)
-            {
-                if (i != cards.Length - 1)
-                {
-                    Console.Write(cards[i] + " ");
-                }
-                else
-                {
-                    Console.WriteLine(cards[i]);
-                }
+                string[] pairs = Console.ReadLine().Split();
+                Console.WriteLine(GetShortestDistance(nodes, int.Parse(pairs[0]), int.Parse(pairs[1]), totalDistance));
             }
         }
+
         // public static void Main()
         // {
         //     string[] tokens = System.Console.ReadLine().Split();
