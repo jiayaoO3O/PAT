@@ -15,4 +15,5 @@
 | 1042 |  20  | [Shuffling Machine](https://jiayaoo3o.github.io/2019/04/19/1042-Shuffling-Machine/) |
 | 1046 |  20  | [Shortest Distance](https://jiayaoo3o.github.io/2019/04/20/1046-Shortest-Distance/) |
 | 1050 |  20  | [String Subtraction](https://jiayaoo3o.github.io/2019/04/22/1050-String-Subtraction/) |
+|      |  20  | [The Dominant Color](https://jiayaoo3o.github.io/2019/04/22/1054-The-Dominant-Color/) |
 

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace PAT
 {
     class Program
@@ -582,23 +584,92 @@ namespace PAT
 
         //1050 String Subtraction
         //https://pintia.cn/problem-sets/994805342720868352/problems/994805429018673152
+        // public static void Main()
+        // {
+        //     string S1 = System.Console.ReadLine();
+        //     string S2 = System.Console.ReadLine();
+        //     bool[] signals = new bool[127];
+        //     foreach (var signal in S2)
+        //     {
+        //         signals[signal] = true;
+        //     }
+        //     foreach (var character in S1)
+        //     {
+        //         if (!signals[character])
+        //         {
+        //             Console.Write(character);
+        //         }
+        //     }
+        // }
+
+        //1054 The Dominant Color
+        //https://pintia.cn/problem-sets/994805342720868352/problems/994805422639136768
+        //第一种解法.
         public static void Main()
         {
-            string S1 = System.Console.ReadLine();
-            string S2 = System.Console.ReadLine();
-            bool[] signals = new bool[127];
-            foreach (var signal in S2)
+            string[] tokens = System.Console.ReadLine().Split();
+            int column = int.Parse(tokens[0]);
+            int row = int.Parse(tokens[1]);
+            int half = (column * row) / 2;
+            int nowColorCount = 1;
+            string nowColor = "";
+            for (int i = 0; i < row; i++)
             {
-                signals[signal] = true;
-            }
-            foreach (var character in S1)
-            {
-                if (!signals[character])
+                tokens = System.Console.ReadLine().Split();
+                foreach (var token in tokens)
                 {
-                    Console.Write(character);
+                    if (token == nowColor)
+                    {
+                        nowColorCount++;
+                    }
+                    else
+                    {
+                        nowColorCount--;
+                        if (nowColorCount == 0)
+                        {
+                            nowColor = token;
+                            nowColorCount = 1;
+                        }
+                    }
                 }
             }
+            Console.WriteLine(nowColor);
         }
+
+        //另一种解法.
+        // public static void Main()
+        // {
+        //     string[] tokens = System.Console.ReadLine().Split();
+        //     int column = int.Parse(tokens[0]);
+        //     int row = int.Parse(tokens[1]);
+        //     int half = (column * row) / 2;
+        //     Dictionary<string, int> dict = new Dictionary<string, int>();
+        //     for (int i = 0; i < row; i++)
+        //     {
+        //         tokens = System.Console.ReadLine().Split();
+        //         foreach (var token in tokens)
+        //         {
+        //             if (dict.ContainsKey(token))
+        //             {
+        //                 dict[token]++;
+        //                 if (dict[token] > half)
+        //                 {
+        //                     Console.WriteLine(token);
+        //                     return;
+        //                 }
+        //             }
+        //             else
+        //             {
+        //                 dict.Add(token, 1);
+        //                 if (dict[token] > half)
+        //                 {
+        //                     Console.WriteLine(token);
+        //                     return;
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
         // public static void Main()
         // {
         //     string[] tokens = System.Console.ReadLine().Split();
