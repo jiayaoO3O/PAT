@@ -556,30 +556,49 @@ namespace PAT
 
         //1046 Shortest Distance
         //https://pintia.cn/problem-sets/994805342720868352/problems/994805435700199424
-        public static int GetShortestDistance(int[] nodes, int beginNode, int endNode, int totalDistance)
-        {
-            int distance = beginNode > endNode ? nodes[beginNode - 1] - nodes[endNode - 1] : nodes[endNode - 1] - nodes[beginNode - 1];
-            return distance < (totalDistance - distance) ? distance : (totalDistance - distance);
-        }
+        // public static int GetShortestDistance(int[] nodes, int beginNode, int endNode, int totalDistance)
+        // {
+        //     int distance = beginNode > endNode ? nodes[beginNode - 1] - nodes[endNode - 1] : nodes[endNode - 1] - nodes[beginNode - 1];
+        //     return distance < (totalDistance - distance) ? distance : (totalDistance - distance);
+        // }
+        // public static void Main()
+        // {
+        //     string[] tokens = System.Console.ReadLine().Split();
+        //     int nodesCount = int.Parse(tokens[0]);
+        //     int[] nodes = new int[nodesCount];
+        //     int totalDistance = 0;
+        //     for (int i = 0; i < nodes.Length; i++)
+        //     {
+        //         nodes[i] = totalDistance;
+        //         totalDistance += int.Parse(tokens[i + 1]);
+        //     }
+        //     int pairsCount = int.Parse(Console.ReadLine());
+        //     for (int i = 0; i < pairsCount; i++)
+        //     {
+        //         string[] pairs = Console.ReadLine().Split();
+        //         Console.WriteLine(GetShortestDistance(nodes, int.Parse(pairs[0]), int.Parse(pairs[1]), totalDistance));
+        //     }
+        // }
+
+        //1050 String Subtraction
+        //https://pintia.cn/problem-sets/994805342720868352/problems/994805429018673152
         public static void Main()
         {
-            string[] tokens = System.Console.ReadLine().Split();
-            int nodesCount = int.Parse(tokens[0]);
-            int[] nodes = new int[nodesCount];
-            int totalDistance = 0;
-            for (int i = 0; i < nodes.Length; i++)
+            string S1 = System.Console.ReadLine();
+            string S2 = System.Console.ReadLine();
+            bool[] signals = new bool[127];
+            foreach (var signal in S2)
             {
-                nodes[i] = totalDistance;
-                totalDistance += int.Parse(tokens[i + 1]);
+                signals[signal] = true;
             }
-            int pairsCount = int.Parse(Console.ReadLine());
-            for (int i = 0; i < pairsCount; i++)
+            foreach (var character in S1)
             {
-                string[] pairs = Console.ReadLine().Split();
-                Console.WriteLine(GetShortestDistance(nodes, int.Parse(pairs[0]), int.Parse(pairs[1]), totalDistance));
+                if (!signals[character])
+                {
+                    Console.Write(character);
+                }
             }
         }
-
         // public static void Main()
         // {
         //     string[] tokens = System.Console.ReadLine().Split();
