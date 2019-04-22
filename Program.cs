@@ -605,36 +605,36 @@ namespace PAT
         //1054 The Dominant Color
         //https://pintia.cn/problem-sets/994805342720868352/problems/994805422639136768
         //第一种解法.
-        public static void Main()
-        {
-            string[] tokens = System.Console.ReadLine().Split();
-            int column = int.Parse(tokens[0]);
-            int row = int.Parse(tokens[1]);
-            int half = (column * row) / 2;
-            int nowColorCount = 1;
-            string nowColor = "";
-            for (int i = 0; i < row; i++)
-            {
-                tokens = System.Console.ReadLine().Split();
-                foreach (var token in tokens)
-                {
-                    if (token == nowColor)
-                    {
-                        nowColorCount++;
-                    }
-                    else
-                    {
-                        nowColorCount--;
-                        if (nowColorCount == 0)
-                        {
-                            nowColor = token;
-                            nowColorCount = 1;
-                        }
-                    }
-                }
-            }
-            Console.WriteLine(nowColor);
-        }
+        // public static void Main()
+        // {
+        //     string[] tokens = System.Console.ReadLine().Split();
+        //     int column = int.Parse(tokens[0]);
+        //     int row = int.Parse(tokens[1]);
+        //     int half = (column * row) / 2;
+        //     int nowColorCount = 1;
+        //     string nowColor = "";
+        //     for (int i = 0; i < row; i++)
+        //     {
+        //         tokens = System.Console.ReadLine().Split();
+        //         foreach (var token in tokens)
+        //         {
+        //             if (token == nowColor)
+        //             {
+        //                 nowColorCount++;
+        //             }
+        //             else
+        //             {
+        //                 nowColorCount--;
+        //                 if (nowColorCount == 0)
+        //                 {
+        //                     nowColor = token;
+        //                     nowColorCount = 1;
+        //                 }
+        //             }
+        //         }
+        //     }
+        //     Console.WriteLine(nowColor);
+        // }
 
         //另一种解法.
         // public static void Main()
@@ -670,6 +670,34 @@ namespace PAT
         //         }
         //     }
         // }
+
+        //1058 A+B in Hogwarts
+        //https://pintia.cn/problem-sets/994805342720868352/problems/994805416519647232
+        public static string HogwartsAddition(string A, string B)
+        {
+            int[] currencyA = new int[3];
+            int[] currencyB = new int[3];
+            int[] result = new int[3];
+            string[] strA = A.Split('.');
+            string[] strB = B.Split('.');
+            int flag = 0;
+            for (int i = 0; i < strA.Length; i++)
+            {
+                currencyA[i] = int.Parse(strA[i]);
+                currencyB[i] = int.Parse(strB[i]);
+            }
+            result[2] = (currencyA[2] + currencyB[2]) % 29;
+            flag = currencyA[2] + currencyB[2] >= 29 ? 1 : 0;
+            result[1] = (currencyA[1] + currencyB[1] + flag) % 17;
+            flag = currencyA[1] + currencyB[1] + flag >= 17 ? 1 : 0;
+            result[0] = currencyA[0] + currencyB[0] + flag;
+            return result[0] + "." + result[1] + "." + result[2];
+        }
+        public static void Main()
+        {
+            string[] tokens = System.Console.ReadLine().Split();
+            Console.WriteLine(HogwartsAddition(tokens[0], tokens[1]));
+        }
         // public static void Main()
         // {
         //     string[] tokens = System.Console.ReadLine().Split();
