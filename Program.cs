@@ -741,51 +741,91 @@ namespace PAT
 
         //1065 A+B and C (64bit)
         //https://pintia.cn/problem-sets/994805342720868352/problems/994805406352654336
+        // public static void Main()
+        // {
+        //     int T = int.Parse(Console.ReadLine());
+        //     for (int i = 0; i < T; i++)
+        //     {
+        //         long A, B, C;
+        //         string[] tokens = System.Console.ReadLine().Split();
+        //         //decimal A, B, C;
+        //         // A = decimal.Parse(tokens[0]);
+        //         // B = decimal.Parse(tokens[1]);
+        //         // C = decimal.Parse(tokens[2]);
+        //         // if (A + B > C ? true : false)
+        //         // {
+        //         //     Console.WriteLine("Case #{0}: true", i + 1);
+        //         // }
+        //         // else
+        //         // {
+        //         //     Console.WriteLine("Case #{0}: false", i + 1);
+        //         // }
+        //         A = long.Parse(tokens[0]);
+        //         B = long.Parse(tokens[1]);
+        //         C = long.Parse(tokens[2]);
+        //         long sum = A + B;
+        //         if (A > 0 && B > 0 && sum < 0)
+        //         {
+        //             Console.WriteLine("Case #{0}: true", i + 1);
+        //         }
+        //         else
+        //         {
+        //             if (A < 0 && B < 0 && sum >= 0)
+        //             {
+        //                 Console.WriteLine("Case #{0}: false", i + 1);
+        //             }
+        //             else
+        //             {
+        //                 if (sum > C)
+        //                 {
+        //                     Console.WriteLine("Case #{0}: true", i + 1);
+        //                 }
+        //                 else
+        //                 {
+        //                     Console.WriteLine("Case #{0}: false", i + 1);
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
+
+        //1069 The Black Hole of Numbers
+        //https://pintia.cn/problem-sets/994805342720868352/problems/994805400954585088
+        public static string Reverse(string input)
+        {
+            char[] num = input.ToCharArray();
+            Array.Reverse(num);
+            return new string(num);
+        }
+        public static string decreasingSort(string input)
+        {
+            while (input.Length != 4)
+            {
+                input += "0";
+            }
+            char[] num = input.ToCharArray();
+            Array.Sort(num);
+            Array.Reverse(num);
+            return new string(num);
+        }
         public static void Main()
         {
-            int T = int.Parse(Console.ReadLine());
-            for (int i = 0; i < T; i++)
+            string input = System.Console.ReadLine();
+            string result = "";
+            string sortedInput = "";
+            string reversedInput = "";
+            while (result != "6174")
             {
-                long A, B, C;
-                string[] tokens = System.Console.ReadLine().Split();
-                //decimal A, B, C;
-                // A = decimal.Parse(tokens[0]);
-                // B = decimal.Parse(tokens[1]);
-                // C = decimal.Parse(tokens[2]);
-                // if (A + B > C ? true : false)
-                // {
-                //     Console.WriteLine("Case #{0}: true", i + 1);
-                // }
-                // else
-                // {
-                //     Console.WriteLine("Case #{0}: false", i + 1);
-                // }
-                A = long.Parse(tokens[0]);
-                B = long.Parse(tokens[1]);
-                C = long.Parse(tokens[2]);
-                long sum = A + B;
-                if (A > 0 && B > 0 && sum < 0)
+                sortedInput = decreasingSort(input);
+                reversedInput = Reverse(sortedInput);
+                result = (int.Parse(sortedInput) - int.Parse(reversedInput)).ToString();
+                if (sortedInput == reversedInput)
                 {
-                    Console.WriteLine("Case #{0}: true", i + 1);
+                    Console.WriteLine("{0} - {1} = {2}", sortedInput, reversedInput, "0000");
+                    return;
                 }
-                else
-                {
-                    if (A < 0 && B < 0 && sum >= 0)
-                    {
-                        Console.WriteLine("Case #{0}: false", i + 1);
-                    }
-                    else
-                    {
-                        if (sum > C)
-                        {
-                            Console.WriteLine("Case #{0}: true", i + 1);
-                        }
-                        else
-                        {
-                            Console.WriteLine("Case #{0}: false", i + 1);
-                        }
-                    }
-                }
+                Console.WriteLine("{0} - {1} = {2}", sortedInput, reversedInput, result.Length == 4 ? result : "0" + result);
+                input = result;
             }
         }
         // public static void Main()
