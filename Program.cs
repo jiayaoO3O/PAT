@@ -673,30 +673,70 @@ namespace PAT
 
         //1058 A+B in Hogwarts
         //https://pintia.cn/problem-sets/994805342720868352/problems/994805416519647232
-        public static string HogwartsAddition(string A, string B)
-        {
-            int[] currencyA = new int[3];
-            int[] currencyB = new int[3];
-            int[] result = new int[3];
-            string[] strA = A.Split('.');
-            string[] strB = B.Split('.');
-            int flag = 0;
-            for (int i = 0; i < strA.Length; i++)
-            {
-                currencyA[i] = int.Parse(strA[i]);
-                currencyB[i] = int.Parse(strB[i]);
-            }
-            result[2] = (currencyA[2] + currencyB[2]) % 29;
-            flag = currencyA[2] + currencyB[2] >= 29 ? 1 : 0;
-            result[1] = (currencyA[1] + currencyB[1] + flag) % 17;
-            flag = currencyA[1] + currencyB[1] + flag >= 17 ? 1 : 0;
-            result[0] = currencyA[0] + currencyB[0] + flag;
-            return result[0] + "." + result[1] + "." + result[2];
-        }
+        // public static string HogwartsAddition(string A, string B)
+        // {
+        //     int[] currencyA = new int[3];
+        //     int[] currencyB = new int[3];
+        //     int[] result = new int[3];
+        //     string[] strA = A.Split('.');
+        //     string[] strB = B.Split('.');
+        //     int flag = 0;
+        //     for (int i = 0; i < strA.Length; i++)
+        //     {
+        //         currencyA[i] = int.Parse(strA[i]);
+        //         currencyB[i] = int.Parse(strB[i]);
+        //     }
+        //     result[2] = (currencyA[2] + currencyB[2]) % 29;
+        //     flag = currencyA[2] + currencyB[2] >= 29 ? 1 : 0;
+        //     result[1] = (currencyA[1] + currencyB[1] + flag) % 17;
+        //     flag = currencyA[1] + currencyB[1] + flag >= 17 ? 1 : 0;
+        //     result[0] = currencyA[0] + currencyB[0] + flag;
+        //     return result[0] + "." + result[1] + "." + result[2];
+        // }
+        // public static void Main()
+        // {
+        //     string[] tokens = System.Console.ReadLine().Split();
+        //     Console.WriteLine(HogwartsAddition(tokens[0], tokens[1]));
+        // }
+
+        //1061 Dating
+        //https://pintia.cn/problem-sets/994805342720868352/problems/994805411985604608
         public static void Main()
         {
-            string[] tokens = System.Console.ReadLine().Split();
-            Console.WriteLine(HogwartsAddition(tokens[0], tokens[1]));
+            string[] tokens = new string[4];
+            string[] result = { "", "", "" };
+            int flag = 0;
+            string[] week = { "MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN" };
+            for (int i = 0; i < tokens.Length; i++)
+            {
+                tokens[i] = System.Console.ReadLine();
+            }
+            for (int i = 0; i < tokens[0].Length && i < tokens[1].Length; i++)
+            {
+                if (tokens[0][i] == tokens[1][i] && tokens[0][i] >= 'A' && tokens[0][i] <= 'G')
+                {
+                    result[0] = week[tokens[0][i] - 'A'];
+                    flag = i + 1;
+                    break;
+                }
+            }
+            for (int i = flag; i < tokens[0].Length && i < tokens[1].Length; i++)
+            {
+                if (tokens[0][i] == tokens[1][i] && (tokens[0][i] >= '0' && tokens[0][i] <= '9' || tokens[0][i] >= 'A' && tokens[0][i] <= 'N'))
+                {
+                    result[1] = tokens[0][i] > '9' ? (tokens[0][i] - '7').ToString() : "0" + tokens[0][i];
+                    break;
+                }
+            }
+            for (int i = 0; i < tokens[2].Length && i < tokens[3].Length; i++)
+            {
+                if (tokens[2][i] == tokens[3][i] && (tokens[2][i] >= 'A' && tokens[2][i] <= 'Z' || tokens[2][i] >= 'a' && tokens[2][i] <= 'z'))
+                {
+                    result[2] = i < 10 ? "0" + i : i.ToString();
+                    Console.WriteLine(result[0] + " " + result[1] + ":" + result[2]);
+                    return;
+                }
+            }
         }
         // public static void Main()
         // {
