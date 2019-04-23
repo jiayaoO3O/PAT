@@ -18,4 +18,5 @@
 | 1054 |  20  | [The Dominant Color](https://jiayaoo3o.github.io/2019/04/22/1054-The-Dominant-Color/) |
 | 1058 |  20  | [A+B in Hogwarts](https://jiayaoo3o.github.io/2019/04/22/1058-A-B-in-Hogwarts/) |
 | 1061 |  20  | [Dating](https://jiayaoo3o.github.io/2019/04/23/1061-Dating/) |
+| 1065 |  20  | [A+B and C (64bit)](https://jiayaoo3o.github.io/2019/04/23/1065-A-B-and-C-64bit/) |
 

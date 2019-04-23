@@ -701,40 +701,90 @@ namespace PAT
 
         //1061 Dating
         //https://pintia.cn/problem-sets/994805342720868352/problems/994805411985604608
+        // public static void Main()
+        // {
+        //     string[] tokens = new string[4];
+        //     string[] result = { "", "", "" };
+        //     int flag = 0;
+        //     string[] week = { "MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN" };
+        //     for (int i = 0; i < tokens.Length; i++)
+        //     {
+        //         tokens[i] = System.Console.ReadLine();
+        //     }
+        //     for (int i = 0; i < tokens[0].Length && i < tokens[1].Length; i++)
+        //     {
+        //         if (tokens[0][i] == tokens[1][i] && tokens[0][i] >= 'A' && tokens[0][i] <= 'G')
+        //         {
+        //             result[0] = week[tokens[0][i] - 'A'];
+        //             flag = i + 1;
+        //             break;
+        //         }
+        //     }
+        //     for (int i = flag; i < tokens[0].Length && i < tokens[1].Length; i++)
+        //     {
+        //         if (tokens[0][i] == tokens[1][i] && (tokens[0][i] >= '0' && tokens[0][i] <= '9' || tokens[0][i] >= 'A' && tokens[0][i] <= 'N'))
+        //         {
+        //             result[1] = tokens[0][i] > '9' ? (tokens[0][i] - '7').ToString() : "0" + tokens[0][i];
+        //             break;
+        //         }
+        //     }
+        //     for (int i = 0; i < tokens[2].Length && i < tokens[3].Length; i++)
+        //     {
+        //         if (tokens[2][i] == tokens[3][i] && (tokens[2][i] >= 'A' && tokens[2][i] <= 'Z' || tokens[2][i] >= 'a' && tokens[2][i] <= 'z'))
+        //         {
+        //             result[2] = i < 10 ? "0" + i : i.ToString();
+        //             Console.WriteLine(result[0] + " " + result[1] + ":" + result[2]);
+        //             return;
+        //         }
+        //     }
+        // }
+
+        //1065 A+B and C (64bit)
+        //https://pintia.cn/problem-sets/994805342720868352/problems/994805406352654336
         public static void Main()
         {
-            string[] tokens = new string[4];
-            string[] result = { "", "", "" };
-            int flag = 0;
-            string[] week = { "MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN" };
-            for (int i = 0; i < tokens.Length; i++)
+            int T = int.Parse(Console.ReadLine());
+            for (int i = 0; i < T; i++)
             {
-                tokens[i] = System.Console.ReadLine();
-            }
-            for (int i = 0; i < tokens[0].Length && i < tokens[1].Length; i++)
-            {
-                if (tokens[0][i] == tokens[1][i] && tokens[0][i] >= 'A' && tokens[0][i] <= 'G')
+                long A, B, C;
+                string[] tokens = System.Console.ReadLine().Split();
+                //decimal A, B, C;
+                // A = decimal.Parse(tokens[0]);
+                // B = decimal.Parse(tokens[1]);
+                // C = decimal.Parse(tokens[2]);
+                // if (A + B > C ? true : false)
+                // {
+                //     Console.WriteLine("Case #{0}: true", i + 1);
+                // }
+                // else
+                // {
+                //     Console.WriteLine("Case #{0}: false", i + 1);
+                // }
+                A = long.Parse(tokens[0]);
+                B = long.Parse(tokens[1]);
+                C = long.Parse(tokens[2]);
+                long sum = A + B;
+                if (A > 0 && B > 0 && sum < 0)
                 {
-                    result[0] = week[tokens[0][i] - 'A'];
-                    flag = i + 1;
-                    break;
+                    Console.WriteLine("Case #{0}: true", i + 1);
                 }
-            }
-            for (int i = flag; i < tokens[0].Length && i < tokens[1].Length; i++)
-            {
-                if (tokens[0][i] == tokens[1][i] && (tokens[0][i] >= '0' && tokens[0][i] <= '9' || tokens[0][i] >= 'A' && tokens[0][i] <= 'N'))
+                else
                 {
-                    result[1] = tokens[0][i] > '9' ? (tokens[0][i] - '7').ToString() : "0" + tokens[0][i];
-                    break;
-                }
-            }
-            for (int i = 0; i < tokens[2].Length && i < tokens[3].Length; i++)
-            {
-                if (tokens[2][i] == tokens[3][i] && (tokens[2][i] >= 'A' && tokens[2][i] <= 'Z' || tokens[2][i] >= 'a' && tokens[2][i] <= 'z'))
-                {
-                    result[2] = i < 10 ? "0" + i : i.ToString();
-                    Console.WriteLine(result[0] + " " + result[1] + ":" + result[2]);
-                    return;
+                    if (A < 0 && B < 0 && sum >= 0)
+                    {
+                        Console.WriteLine("Case #{0}: false", i + 1);
+                    }
+                    else
+                    {
+                        if (sum > C)
+                        {
+                            Console.WriteLine("Case #{0}: true", i + 1);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Case #{0}: false", i + 1);
+                        }
+                    }
                 }
             }
         }
