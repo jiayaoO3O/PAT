@@ -831,38 +831,96 @@ namespace PAT
 
         //1077 Kuchiguse
         //https://pintia.cn/problem-sets/994805342720868352/problems/994805390896644096
-        public static int MaxLengthOfSubstring(string[] inputs)
+        // public static int MaxLengthOfSubstring(string[] inputs)
+        // {
+        //     int result = 0;
+        //     char[] standard = inputs[0].ToCharArray();
+        //     char[] str;
+        //     Array.Reverse(standard);
+        //     for (int i = 0; i < standard.Length; i++)
+        //     {
+        //         foreach (var input in inputs)
+        //         {
+        //             str = input.ToCharArray();
+        //             Array.Reverse(str);
+        //             if (str[i] != standard[i])
+        //             {
+        //                 return result;
+        //             }
+        //         }
+        //         result++;
+        //     }
+        //     return result;
+        // }
+        // public static void Main()
+        // {
+        //     int count = int.Parse(Console.ReadLine());
+        //     string[] inputs = new string[count];
+        //     for (int i = 0; i < count; i++)
+        //     {
+        //         inputs[i] = Console.ReadLine();
+        //     }
+        //     count = MaxLengthOfSubstring(inputs);
+        //     string substring = inputs[0].Substring(inputs[0].Length - count);
+        //     Console.WriteLine(count == 0 ? "nai" : substring);
+        // }
+
+        //1081 Rational Sum
+        //https://pintia.cn/problem-sets/994805342720868352/problems/994805386161274880
+        public static long GetGreatestCommonDivisor(long numerator, long denominator)
         {
-            int result = 0;
-            char[] standard = inputs[0].ToCharArray();
-            char[] str;
-            Array.Reverse(standard);
-            for (int i = 0; i < standard.Length; i++)
-            {
-                foreach (var input in inputs)
-                {
-                    str = input.ToCharArray();
-                    Array.Reverse(str);
-                    if (str[i] != standard[i])
-                    {
-                        return result;
-                    }
-                }
-                result++;
-            }
-            return result;
+            return denominator == 0 ? Math.Abs(numerator) : GetGreatestCommonDivisor(denominator, numerator % denominator);
+            //辗转相除法的递归形式.
+        }
+        public static long[] GetRationalSum(long[] rationalSum, long[] rationalNumber)
+        {
+            long greatestCommonDivisor = GetGreatestCommonDivisor(rationalNumber[0], rationalNumber[1]);
+            rationalNumber[0] = rationalNumber[0] / greatestCommonDivisor;
+            rationalNumber[1] = rationalNumber[1] / greatestCommonDivisor;
+            rationalSum[0] = rationalSum[0] * rationalNumber[1] + rationalSum[1] * rationalNumber[0];
+            rationalSum[1] = rationalSum[1] * rationalNumber[1];
+            greatestCommonDivisor = GetGreatestCommonDivisor(rationalSum[0], rationalSum[1]);
+            rationalSum[0] = rationalSum[0] / greatestCommonDivisor;
+            rationalSum[1] = rationalSum[1] / greatestCommonDivisor;
+            return rationalSum;
         }
         public static void Main()
         {
-            int count = int.Parse(Console.ReadLine());
-            string[] inputs = new string[count];
-            for (int i = 0; i < count; i++)
+            Console.ReadLine();
+            string[] inputs = Console.ReadLine().Split();
+            long[] rationalSum = new long[2] { 0, 1 };
+            long[] rationalNumber = new long[2];
+            long integer = 0;
+            foreach (var input in inputs)
             {
-                inputs[i] = Console.ReadLine();
+                rationalNumber[0] = long.Parse(input.Split('/')[0]);
+                rationalNumber[1] = long.Parse(input.Split('/')[1]);
+                rationalSum = GetRationalSum(rationalSum, rationalNumber);
             }
-            count = MaxLengthOfSubstring(inputs);
-            string substring = inputs[0].Substring(inputs[0].Length - count);
-            Console.WriteLine(count == 0 ? "nai" : substring);
+            integer = rationalSum[0] / rationalSum[1];
+            rationalSum[0] = rationalSum[0] % rationalSum[1];
+            if (integer == 0)
+            {
+                if (rationalSum[0] == 0)
+                {
+                    Console.WriteLine("0");
+                }
+                else
+                {
+                    Console.WriteLine("{0}/{1}", rationalSum[0], rationalSum[1]);
+                }
+            }
+            else
+            {
+                if (rationalSum[0] == 0)
+                {
+                    Console.WriteLine(integer);
+                }
+                else
+                {
+                    Console.WriteLine("{0} {1}/{2}", integer, rationalSum[0], rationalSum[1]);
+                }
+            }
         }
         // public static void Main()
         // {
