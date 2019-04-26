@@ -20,4 +20,5 @@
 | 1061 |  20  | [Dating](https://jiayaoo3o.github.io/2019/04/23/1061-Dating/) |
 | 1065 |  20  | [A+B and C (64bit)](https://jiayaoo3o.github.io/2019/04/23/1065-A-B-and-C-64bit/) |
 | 1069 |  20  | [The Black Hole of Numbers](https://jiayaoo3o.github.io/2019/04/23/1069-The-Black-Hole-of-Numbers/) |
+| 1077 |  20  | [Kuchiguse](https://jiayaoo3o.github.io/2019/04/26/1077-Kuchiguse/) |
 

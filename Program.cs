@@ -791,42 +791,78 @@ namespace PAT
 
         //1069 The Black Hole of Numbers
         //https://pintia.cn/problem-sets/994805342720868352/problems/994805400954585088
-        public static string Reverse(string input)
+        // public static string Reverse(string input)
+        // {
+        //     char[] num = input.ToCharArray();
+        //     Array.Reverse(num);
+        //     return new string(num);
+        // }
+        // public static string decreasingSort(string input)
+        // {
+        //     while (input.Length != 4)
+        //     {
+        //         input += "0";
+        //     }
+        //     char[] num = input.ToCharArray();
+        //     Array.Sort(num);
+        //     Array.Reverse(num);
+        //     return new string(num);
+        // }
+        // public static void Main()
+        // {
+        //     string input = System.Console.ReadLine();
+        //     string result = "";
+        //     string sortedInput = "";
+        //     string reversedInput = "";
+        //     while (result != "6174")
+        //     {
+        //         sortedInput = decreasingSort(input);
+        //         reversedInput = Reverse(sortedInput);
+        //         result = (int.Parse(sortedInput) - int.Parse(reversedInput)).ToString();
+        //         if (sortedInput == reversedInput)
+        //         {
+        //             Console.WriteLine("{0} - {1} = {2}", sortedInput, reversedInput, "0000");
+        //             return;
+        //         }
+        //         Console.WriteLine("{0} - {1} = {2}", sortedInput, reversedInput, result.Length == 4 ? result : "0" + result);
+        //         input = result;
+        //     }
+        // }
+
+        //1077 Kuchiguse
+        //https://pintia.cn/problem-sets/994805342720868352/problems/994805390896644096
+        public static int MaxLengthOfSubstring(string[] inputs)
         {
-            char[] num = input.ToCharArray();
-            Array.Reverse(num);
-            return new string(num);
-        }
-        public static string decreasingSort(string input)
-        {
-            while (input.Length != 4)
+            int result = 0;
+            char[] standard = inputs[0].ToCharArray();
+            char[] str;
+            Array.Reverse(standard);
+            for (int i = 0; i < standard.Length; i++)
             {
-                input += "0";
+                foreach (var input in inputs)
+                {
+                    str = input.ToCharArray();
+                    Array.Reverse(str);
+                    if (str[i] != standard[i])
+                    {
+                        return result;
+                    }
+                }
+                result++;
             }
-            char[] num = input.ToCharArray();
-            Array.Sort(num);
-            Array.Reverse(num);
-            return new string(num);
+            return result;
         }
         public static void Main()
         {
-            string input = System.Console.ReadLine();
-            string result = "";
-            string sortedInput = "";
-            string reversedInput = "";
-            while (result != "6174")
+            int count = int.Parse(Console.ReadLine());
+            string[] inputs = new string[count];
+            for (int i = 0; i < count; i++)
             {
-                sortedInput = decreasingSort(input);
-                reversedInput = Reverse(sortedInput);
-                result = (int.Parse(sortedInput) - int.Parse(reversedInput)).ToString();
-                if (sortedInput == reversedInput)
-                {
-                    Console.WriteLine("{0} - {1} = {2}", sortedInput, reversedInput, "0000");
-                    return;
-                }
-                Console.WriteLine("{0} - {1} = {2}", sortedInput, reversedInput, result.Length == 4 ? result : "0" + result);
-                input = result;
+                inputs[i] = Console.ReadLine();
             }
+            count = MaxLengthOfSubstring(inputs);
+            string substring = inputs[0].Substring(inputs[0].Length - count);
+            Console.WriteLine(count == 0 ? "nai" : substring);
         }
         // public static void Main()
         // {
