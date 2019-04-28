@@ -23,4 +23,5 @@
 | 1077 |  20  | [Kuchiguse](https://jiayaoo3o.github.io/2019/04/26/1077-Kuchiguse/) |
 | 1081 |  20  | [Rational Sum](https://jiayaoo3o.github.io/2019/04/26/1081-Rational-Sum/) |
 | 1084 |  20  | [Broken Keyboard](https://jiayaoo3o.github.io/2019/04/28/1084-Broken-Keyboard/) |
+| 1092 |  20  | [To Buy or Not to Buy](https://jiayaoo3o.github.io/2019/04/28/1092-To-Buy-or-Not-to-Buy/) |
 

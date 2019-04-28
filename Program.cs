@@ -952,19 +952,58 @@ namespace PAT
         //     }
         //     Console.WriteLine(result);
         // }
+        // public static void Main()
+        // {
+        //     string original = System.Console.ReadLine().ToUpper();
+        //     string typedOut = System.Console.ReadLine().ToUpper();
+        //     string result = "";
+        //     foreach (var item in original)
+        //     {
+        //         if (!typedOut.Contains(item.ToString()) && !result.Contains(item.ToString()))
+        //         {
+        //             result += item;
+        //         }
+        //     }
+        //     Console.WriteLine(result);
+        // }
+
+        //1092 To Buy or Not to Buy
+        //https://pintia.cn/problem-sets/994805342720868352/problems/994805374509498368
         public static void Main()
         {
-            string original = System.Console.ReadLine().ToUpper();
-            string typedOut = System.Console.ReadLine().ToUpper();
-            string result = "";
-            foreach (var item in original)
+            string shopBeads = Console.ReadLine();
+            string needBeads = Console.ReadLine();
+            int missingBeads = 0;
+            int extraBeads = 0;
+            int[] colors = new int[128];
+            foreach (var bead in shopBeads)
             {
-                if (!typedOut.Contains(item.ToString()) && !result.Contains(item.ToString()))
-                {
-                    result += item;
-                }
+                colors[bead]++;
             }
-            Console.WriteLine(result);
+            foreach (var bead in needBeads)
+            {
+                colors[bead]--;
+            }
+            foreach (var bead in shopBeads + needBeads)
+            {
+                if (colors[bead] > 0)
+                {
+                    extraBeads += colors[bead];
+                }
+                else
+                {
+                    missingBeads += colors[bead];
+                }
+                colors[bead] = 0;
+            }
+            if (missingBeads < 0)
+            {
+                Console.WriteLine("No {0}", 0 - missingBeads);
+            }
+            else
+            {
+                Console.WriteLine("Yes {0}", extraBeads);
+            }
         }
         // public static void Main()
         // {
