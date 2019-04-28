@@ -867,60 +867,104 @@ namespace PAT
 
         //1081 Rational Sum
         //https://pintia.cn/problem-sets/994805342720868352/problems/994805386161274880
-        public static long GetGreatestCommonDivisor(long numerator, long denominator)
-        {
-            return denominator == 0 ? Math.Abs(numerator) : GetGreatestCommonDivisor(denominator, numerator % denominator);
-            //辗转相除法的递归形式.
-        }
-        public static long[] GetRationalSum(long[] rationalSum, long[] rationalNumber)
-        {
-            long greatestCommonDivisor = GetGreatestCommonDivisor(rationalNumber[0], rationalNumber[1]);
-            rationalNumber[0] = rationalNumber[0] / greatestCommonDivisor;
-            rationalNumber[1] = rationalNumber[1] / greatestCommonDivisor;
-            rationalSum[0] = rationalSum[0] * rationalNumber[1] + rationalSum[1] * rationalNumber[0];
-            rationalSum[1] = rationalSum[1] * rationalNumber[1];
-            greatestCommonDivisor = GetGreatestCommonDivisor(rationalSum[0], rationalSum[1]);
-            rationalSum[0] = rationalSum[0] / greatestCommonDivisor;
-            rationalSum[1] = rationalSum[1] / greatestCommonDivisor;
-            return rationalSum;
-        }
+        // public static long GetGreatestCommonDivisor(long numerator, long denominator)
+        // {
+        //     return denominator == 0 ? Math.Abs(numerator) : GetGreatestCommonDivisor(denominator, numerator % denominator);
+        //     //辗转相除法的递归形式.
+        // }
+        // public static long[] GetRationalSum(long[] rationalSum, long[] rationalNumber)
+        // {
+        //     long greatestCommonDivisor = GetGreatestCommonDivisor(rationalNumber[0], rationalNumber[1]);
+        //     rationalNumber[0] = rationalNumber[0] / greatestCommonDivisor;
+        //     rationalNumber[1] = rationalNumber[1] / greatestCommonDivisor;
+        //     rationalSum[0] = rationalSum[0] * rationalNumber[1] + rationalSum[1] * rationalNumber[0];
+        //     rationalSum[1] = rationalSum[1] * rationalNumber[1];
+        //     greatestCommonDivisor = GetGreatestCommonDivisor(rationalSum[0], rationalSum[1]);
+        //     rationalSum[0] = rationalSum[0] / greatestCommonDivisor;
+        //     rationalSum[1] = rationalSum[1] / greatestCommonDivisor;
+        //     return rationalSum;
+        // }
+        // public static void Main()
+        // {
+        //     Console.ReadLine();
+        //     string[] inputs = Console.ReadLine().Split();
+        //     long[] rationalSum = new long[2] { 0, 1 };
+        //     long[] rationalNumber = new long[2];
+        //     long integer = 0;
+        //     foreach (var input in inputs)
+        //     {
+        //         rationalNumber[0] = long.Parse(input.Split('/')[0]);
+        //         rationalNumber[1] = long.Parse(input.Split('/')[1]);
+        //         rationalSum = GetRationalSum(rationalSum, rationalNumber);
+        //     }
+        //     integer = rationalSum[0] / rationalSum[1];
+        //     rationalSum[0] = rationalSum[0] % rationalSum[1];
+        //     if (integer == 0)
+        //     {
+        //         if (rationalSum[0] == 0)
+        //         {
+        //             Console.WriteLine("0");
+        //         }
+        //         else
+        //         {
+        //             Console.WriteLine("{0}/{1}", rationalSum[0], rationalSum[1]);
+        //         }
+        //     }
+        //     else
+        //     {
+        //         if (rationalSum[0] == 0)
+        //         {
+        //             Console.WriteLine(integer);
+        //         }
+        //         else
+        //         {
+        //             Console.WriteLine("{0} {1}/{2}", integer, rationalSum[0], rationalSum[1]);
+        //         }
+        //     }
+        // }
+
+        //1084 Broken Keyboard
+        //https://pintia.cn/problem-sets/994805342720868352/problems/994805382902300672
+        // public static void Main()
+        // {
+        //     string original = System.Console.ReadLine().ToUpper();
+        //     string typedOut = System.Console.ReadLine().ToUpper();
+        //     string result = "";
+        //     int[] ascii = new int[128];
+        //     foreach (var item in original)
+        //     {
+        //         ascii[item] = 1;
+        //     }
+        //     foreach (var item in typedOut)
+        //     {
+        //         if (ascii[item] == 1)
+        //         {
+        //             ascii[item] = 0;
+        //         }
+        //     }
+        //     foreach (var item in original)
+        //     {
+        //         if (ascii[item] == 1)
+        //         {
+        //             result += item;
+        //             ascii[item] = 0;
+        //         }
+        //     }
+        //     Console.WriteLine(result);
+        // }
         public static void Main()
         {
-            Console.ReadLine();
-            string[] inputs = Console.ReadLine().Split();
-            long[] rationalSum = new long[2] { 0, 1 };
-            long[] rationalNumber = new long[2];
-            long integer = 0;
-            foreach (var input in inputs)
+            string original = System.Console.ReadLine().ToUpper();
+            string typedOut = System.Console.ReadLine().ToUpper();
+            string result = "";
+            foreach (var item in original)
             {
-                rationalNumber[0] = long.Parse(input.Split('/')[0]);
-                rationalNumber[1] = long.Parse(input.Split('/')[1]);
-                rationalSum = GetRationalSum(rationalSum, rationalNumber);
-            }
-            integer = rationalSum[0] / rationalSum[1];
-            rationalSum[0] = rationalSum[0] % rationalSum[1];
-            if (integer == 0)
-            {
-                if (rationalSum[0] == 0)
+                if (!typedOut.Contains(item.ToString()) && !result.Contains(item.ToString()))
                 {
-                    Console.WriteLine("0");
-                }
-                else
-                {
-                    Console.WriteLine("{0}/{1}", rationalSum[0], rationalSum[1]);
+                    result += item;
                 }
             }
-            else
-            {
-                if (rationalSum[0] == 0)
-                {
-                    Console.WriteLine(integer);
-                }
-                else
-                {
-                    Console.WriteLine("{0} {1}/{2}", integer, rationalSum[0], rationalSum[1]);
-                }
-            }
+            Console.WriteLine(result);
         }
         // public static void Main()
         // {

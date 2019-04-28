@@ -22,4 +22,5 @@
 | 1069 |  20  | [The Black Hole of Numbers](https://jiayaoo3o.github.io/2019/04/23/1069-The-Black-Hole-of-Numbers/) |
 | 1077 |  20  | [Kuchiguse](https://jiayaoo3o.github.io/2019/04/26/1077-Kuchiguse/) |
 | 1081 |  20  | [Rational Sum](https://jiayaoo3o.github.io/2019/04/26/1081-Rational-Sum/) |
+| 1084 |  20  | [Broken Keyboard](https://jiayaoo3o.github.io/2019/04/28/1084-Broken-Keyboard/) |
 
