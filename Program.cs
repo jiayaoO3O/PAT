@@ -969,40 +969,116 @@ namespace PAT
 
         //1092 To Buy or Not to Buy
         //https://pintia.cn/problem-sets/994805342720868352/problems/994805374509498368
-        public static void Main()
+        // public static void Main()
+        // {
+        //     string shopBeads = Console.ReadLine();
+        //     string needBeads = Console.ReadLine();
+        //     int missingBeads = 0;
+        //     int extraBeads = 0;
+        //     int[] colors = new int[128];
+        //     foreach (var bead in shopBeads)
+        //     {
+        //         colors[bead]++;
+        //     }
+        //     foreach (var bead in needBeads)
+        //     {
+        //         colors[bead]--;
+        //     }
+        //     foreach (var bead in shopBeads + needBeads)
+        //     {
+        //         if (colors[bead] > 0)
+        //         {
+        //             extraBeads += colors[bead];
+        //         }
+        //         else
+        //         {
+        //             missingBeads += colors[bead];
+        //         }
+        //         colors[bead] = 0;
+        //     }
+        //     if (missingBeads < 0)
+        //     {
+        //         Console.WriteLine("No {0}", 0 - missingBeads);
+        //     }
+        //     else
+        //     {
+        //         Console.WriteLine("Yes {0}", extraBeads);
+        //     }
+        // }
+
+        //1100 Mars Numbers
+        //https://pintia.cn/problem-sets/994805342720868352/problems/
+        public static int translateToEarth(string MarsNumber)
         {
-            string shopBeads = Console.ReadLine();
-            string needBeads = Console.ReadLine();
-            int missingBeads = 0;
-            int extraBeads = 0;
-            int[] colors = new int[128];
-            foreach (var bead in shopBeads)
+            Dictionary<string, int> lowerDigits = new Dictionary<string, int>() {
+        {"tret",0},{"jan",1},{"feb",2},{"mar",3},{"apr",4},{"may",5},
+        {"jun",6},{"jly",7},{"aug",8},{"sep",9},{"oct",10},{"nov",11},{"dec",12}};
+            Dictionary<string, int> higherDigit = new Dictionary<string, int>() {
+        {"tam",1},{"hel",2},{"maa",3},{"huh",4},{"tou",5},
+        {"kes",6},{"hei",7},{"elo",8},{"syy",9},{"lok",10},{"mer",11},{"jou",12}};
+            string[] numbers = MarsNumber.Split();
+            if (numbers.Length == 1)
             {
-                colors[bead]++;
-            }
-            foreach (var bead in needBeads)
-            {
-                colors[bead]--;
-            }
-            foreach (var bead in shopBeads + needBeads)
-            {
-                if (colors[bead] > 0)
+                if (lowerDigits.ContainsKey(numbers[0]))
                 {
-                    extraBeads += colors[bead];
+                    return lowerDigits[numbers[0]];
                 }
                 else
                 {
-                    missingBeads += colors[bead];
+                    return higherDigit[numbers[0]] * 13;
                 }
-                colors[bead] = 0;
-            }
-            if (missingBeads < 0)
-            {
-                Console.WriteLine("No {0}", 0 - missingBeads);
             }
             else
             {
-                Console.WriteLine("Yes {0}", extraBeads);
+                return higherDigit[numbers[0]] * 13 + lowerDigits[numbers[1]];
+            }
+        }
+        public static string translateToMars(int EarthNumber)
+        {
+            if (EarthNumber == 0)
+            {
+                return "tret";
+            }
+            string[] lowerDigits = { "tret", "jan", "feb", "mar", "apr", "may", "jun", "jly", "aug", "sep", "oct", "nov", "dec" };
+            string[] higherDigit = { "", "tam", "hel", "maa", "huh", "tou", "kes", "hei", "elo", "syy", "lok", "mer", "jou" };
+            int[] number = { 0, 0 };
+            int i = 1;
+            while (EarthNumber != 0)
+            {
+                number[i--] = EarthNumber % 13;
+                EarthNumber /= 13;
+            }
+            if (number[0] == 0)
+            {
+                return lowerDigits[number[1]];
+            }
+            else
+            {
+                if (number[1] == 0)
+                {
+                    return higherDigit[number[0]];
+                }
+                else
+                {
+                    return higherDigit[number[0]] + " " + lowerDigits[number[1]];
+                }
+            }
+        }
+        public static void Main()
+        {
+            int result;
+            int count = int.Parse(Console.ReadLine());
+            while (count-- != 0)
+            {
+                string input = Console.ReadLine();
+                if (int.TryParse(input, out result))
+                {
+                    Console.WriteLine(translateToMars(result));
+                }
+                else
+                {
+                    Console.WriteLine(translateToEarth(input));
+                }
             }
         }
         // public static void Main()
