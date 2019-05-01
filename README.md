@@ -26,4 +26,5 @@
 | 1092 |  20  | [To Buy or Not to Buy](https://jiayaoo3o.github.io/2019/04/28/1092-To-Buy-or-Not-to-Buy/) |
 | 1100 |  20  | [Mars Numbers](https://jiayaoo3o.github.io/2019/04/29/1100-Mars-Numbers/) |
 | 1108 |  20  | [Finding Average](https://jiayaoo3o.github.io/2019/04/30/1108-Finding-Average/) |
+| 1112 |  20  | [Stucked Keyboard](https://jiayaoo3o.github.io/2019/05/01/1112-Stucked-Keyboard/) |
 

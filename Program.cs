@@ -1084,67 +1084,118 @@ namespace PAT
 
         //1108 Finding Average
         //https://pintia.cn/problem-sets/994805342720868352/problems/994805360777347072
-        public static bool IsLegalInput(string input)
+        // public static bool IsLegalInput(string input)
+        // {
+        //     double result = 0;
+        //     if (double.TryParse(input, out result))
+        //     {
+        //         if (result < -1000 || result > 1000)
+        //         {
+        //             return false;
+        //         }
+        //         else
+        //         {
+        //             if (input.IndexOf('.') > 0 && input.ToString().Length - input.ToString().IndexOf('.') > 3)
+        //             {
+        //                 return false;
+        //             }
+        //             else
+        //             {
+        //                 return true;
+        //             }
+        //         }
+        //     }
+        //     else
+        //     {
+        //         return false;
+        //     }
+        // }
+        // public static void Main()
+        // {
+        //     int count = int.Parse(Console.ReadLine());
+        //     int legalCount = 0;
+        //     double legalSum = 0;
+        //     string[] inputs = Console.ReadLine().Split();
+        //     Queue<string> illegalInput = new Queue<string>();
+        //     foreach (var input in inputs)
+        //     {
+        //         if (IsLegalInput(input))
+        //         {
+        //             legalSum += double.Parse(input);
+        //             legalCount++;
+        //         }
+        //         else
+        //         {
+        //             illegalInput.Enqueue(input);
+        //         }
+        //     }
+        //     while (illegalInput.Count != 0)
+        //     {
+        //         Console.WriteLine("ERROR: {0} is not a legal number", illegalInput.Dequeue());
+        //     }
+        //     if (legalCount == 0)
+        //     {
+        //         Console.WriteLine("The average of 0 numbers is Undefined");
+        //     }
+        //     if (legalCount == 1)
+        //     {
+        //         Console.WriteLine("The average of 1 number is {0}", legalSum.ToString("0.00"));
+        //     }
+        //     if (legalCount > 1)
+        //     {
+        //         Console.WriteLine("The average of {0} numbers is {1}", legalCount, (legalSum / legalCount).ToString("0.00"));
+        //     }
+        // }
+
+        //1112 Stucked Keyboard
+        //https://pintia.cn/problem-sets/994805342720868352/problems/994805357933608960
+        public static void Main()
         {
-            double result = 0;
-            if (double.TryParse(input, out result))
+            int repeatedlyTimes = int.Parse(Console.ReadLine());
+            string str = Console.ReadLine();
+            int[] characters = new int[128];
+            char nowKey = str[0];
+            int nowKeyCount = 0;
+            string brokenKeys = "";
+            string originalString = "";
+            foreach (var character in (str + " "))
             {
-                if (result < -1000 || result > 1000)
+                if (character == nowKey)
                 {
-                    return false;
+                    nowKeyCount++;
                 }
                 else
                 {
-                    if (input.IndexOf('.') > 0 && input.ToString().Length - input.ToString().IndexOf('.') > 3)
+                    if (nowKeyCount % repeatedlyTimes == 0 && characters[nowKey] != -1)
                     {
-                        return false;
+                        characters[nowKey] = 1;
                     }
                     else
                     {
-                        return true;
+                        characters[nowKey] = -1;
                     }
+                    nowKey = character;
+                    nowKeyCount = 1;
                 }
             }
-            else
+            for (int i = 0; i < str.Length; i++)
             {
-                return false;
-            }
-        }
-        public static void Main()
-        {
-            int count = int.Parse(Console.ReadLine());
-            int legalCount = 0;
-            double legalSum = 0;
-            string[] inputs = Console.ReadLine().Split();
-            Queue<string> illegalInput = new Queue<string>();
-            foreach (var input in inputs)
-            {
-                if (IsLegalInput(input))
+                if (characters[str[i]] == 1)
                 {
-                    legalSum += double.Parse(input);
-                    legalCount++;
+                    if (!brokenKeys.Contains(str[i].ToString()))
+                    {
+                        brokenKeys += str[i];
+                    }
+                    i += repeatedlyTimes - 1;
+                    originalString += str[i];
                 }
                 else
                 {
-                    illegalInput.Enqueue(input);
+                    originalString += str[i];
                 }
             }
-            while (illegalInput.Count != 0)
-            {
-                Console.WriteLine("ERROR: {0} is not a legal number", illegalInput.Dequeue());
-            }
-            if (legalCount == 0)
-            {
-                Console.WriteLine("The average of 0 numbers is Undefined");
-            }
-            if (legalCount == 1)
-            {
-                Console.WriteLine("The average of 1 number is {0}", legalSum.ToString("0.00"));
-            }
-            if (legalCount > 1)
-            {
-                Console.WriteLine("The average of {0} numbers is {1}", legalCount, (legalSum / legalCount).ToString("0.00"));
-            }
+            Console.WriteLine(brokenKeys);
+            Console.WriteLine(originalString);
         }
     }
 }
