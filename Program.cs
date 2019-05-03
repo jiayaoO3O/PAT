@@ -1149,53 +1149,114 @@ namespace PAT
 
         //1112 Stucked Keyboard
         //https://pintia.cn/problem-sets/994805342720868352/problems/994805357933608960
+        // public static void Main()
+        // {
+        //     int repeatedlyTimes = int.Parse(Console.ReadLine());
+        //     string str = Console.ReadLine();
+        //     int[] characters = new int[128];
+        //     char nowKey = str[0];
+        //     int nowKeyCount = 0;
+        //     string brokenKeys = "";
+        //     string originalString = "";
+        //     foreach (var character in (str + " "))
+        //     {
+        //         if (character == nowKey)
+        //         {
+        //             nowKeyCount++;
+        //         }
+        //         else
+        //         {
+        //             if (nowKeyCount % repeatedlyTimes == 0 && characters[nowKey] != -1)
+        //             {
+        //                 characters[nowKey] = 1;
+        //             }
+        //             else
+        //             {
+        //                 characters[nowKey] = -1;
+        //             }
+        //             nowKey = character;
+        //             nowKeyCount = 1;
+        //         }
+        //     }
+        //     for (int i = 0; i < str.Length; i++)
+        //     {
+        //         if (characters[str[i]] == 1)
+        //         {
+        //             if (!brokenKeys.Contains(str[i].ToString()))
+        //             {
+        //                 brokenKeys += str[i];
+        //             }
+        //             i += repeatedlyTimes - 1;
+        //             originalString += str[i];
+        //         }
+        //         else
+        //         {
+        //             originalString += str[i];
+        //         }
+        //     }
+        //     Console.WriteLine(brokenKeys);
+        //     Console.WriteLine(originalString);
+        // }
+
+        //1116 Come on! Let's C
+        //https://pintia.cn/problem-sets/994805342720868352/problems/994805355358306304
+        public static bool IsPrime(int input)
+        {
+            if (input <= 1)
+            {
+                return false;
+            }
+            for (int i = 2; i <= Math.Sqrt(input); i++)
+            {
+                if (input % i == 0)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
         public static void Main()
         {
-            int repeatedlyTimes = int.Parse(Console.ReadLine());
-            string str = Console.ReadLine();
-            int[] characters = new int[128];
-            char nowKey = str[0];
-            int nowKeyCount = 0;
-            string brokenKeys = "";
-            string originalString = "";
-            foreach (var character in (str + " "))
+            Dictionary<string, int> rankList = new Dictionary<string, int>();
+            int count = int.Parse(Console.ReadLine());
+            for (int i = 0; i < count; i++)
             {
-                if (character == nowKey)
+                rankList.Add(Console.ReadLine(), i + 1);
+            }
+            count = int.Parse(Console.ReadLine());
+            string queryID;
+            for (int i = 0; i < count; i++)
+            {
+                queryID = Console.ReadLine();
+                if (!rankList.ContainsKey(queryID))
                 {
-                    nowKeyCount++;
+                    Console.WriteLine("{0}: Are you kidding?", queryID);
                 }
                 else
                 {
-                    if (nowKeyCount % repeatedlyTimes == 0 && characters[nowKey] != -1)
+                    if (rankList[queryID] == -1)
                     {
-                        characters[nowKey] = 1;
+                        Console.WriteLine("{0}: Checked", queryID);
+                        continue;
+                    }
+                    if (rankList[queryID] == 1)
+                    {
+                        Console.WriteLine("{0}: Mystery Award", queryID);
                     }
                     else
                     {
-                        characters[nowKey] = -1;
+                        if (IsPrime(rankList[queryID]))
+                        {
+                            Console.WriteLine("{0}: Minion", queryID);
+                        }
+                        else
+                        {
+                            Console.WriteLine("{0}: Chocolate", queryID);
+                        }
                     }
-                    nowKey = character;
-                    nowKeyCount = 1;
+                    rankList[queryID] = -1;
                 }
             }
-            for (int i = 0; i < str.Length; i++)
-            {
-                if (characters[str[i]] == 1)
-                {
-                    if (!brokenKeys.Contains(str[i].ToString()))
-                    {
-                        brokenKeys += str[i];
-                    }
-                    i += repeatedlyTimes - 1;
-                    originalString += str[i];
-                }
-                else
-                {
-                    originalString += str[i];
-                }
-            }
-            Console.WriteLine(brokenKeys);
-            Console.WriteLine(originalString);
         }
     }
 }
