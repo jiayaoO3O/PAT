@@ -28,4 +28,5 @@
 | 1108 |  20  | [Finding Average](https://jiayaoo3o.github.io/2019/04/30/1108-Finding-Average/) |
 | 1112 |  20  | [Stucked Keyboard](https://jiayaoo3o.github.io/2019/05/01/1112-Stucked-Keyboard/) |
 | 1116 |  20  | [Come on! Let's C](https://jiayaoo3o.github.io/2019/05/03/1116-Come-on-Let-s-C/) |
+| 1120 |  20  | [Friend Numbers](https://jiayaoo3o.github.io/2019/05/03/1120-Friend-Numbers/) |
 

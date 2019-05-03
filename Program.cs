@@ -1200,61 +1200,104 @@ namespace PAT
 
         //1116 Come on! Let's C
         //https://pintia.cn/problem-sets/994805342720868352/problems/994805355358306304
-        public static bool IsPrime(int input)
+        // public static bool IsPrime(int input)
+        // {
+        //     if (input <= 1)
+        //     {
+        //         return false;
+        //     }
+        //     for (int i = 2; i <= Math.Sqrt(input); i++)
+        //     {
+        //         if (input % i == 0)
+        //         {
+        //             return false;
+        //         }
+        //     }
+        //     return true;
+        // }
+        // public static void Main()
+        // {
+        //     Dictionary<string, int> rankList = new Dictionary<string, int>();
+        //     int count = int.Parse(Console.ReadLine());
+        //     for (int i = 0; i < count; i++)
+        //     {
+        //         rankList.Add(Console.ReadLine(), i + 1);
+        //     }
+        //     count = int.Parse(Console.ReadLine());
+        //     string queryID;
+        //     for (int i = 0; i < count; i++)
+        //     {
+        //         queryID = Console.ReadLine();
+        //         if (!rankList.ContainsKey(queryID))
+        //         {
+        //             Console.WriteLine("{0}: Are you kidding?", queryID);
+        //         }
+        //         else
+        //         {
+        //             if (rankList[queryID] == -1)
+        //             {
+        //                 Console.WriteLine("{0}: Checked", queryID);
+        //                 continue;
+        //             }
+        //             if (rankList[queryID] == 1)
+        //             {
+        //                 Console.WriteLine("{0}: Mystery Award", queryID);
+        //             }
+        //             else
+        //             {
+        //                 if (IsPrime(rankList[queryID]))
+        //                 {
+        //                     Console.WriteLine("{0}: Minion", queryID);
+        //                 }
+        //                 else
+        //                 {
+        //                     Console.WriteLine("{0}: Chocolate", queryID);
+        //                 }
+        //             }
+        //             rankList[queryID] = -1;
+        //         }
+        //     }
+        // }
+
+        //1120 Friend Numbers
+        //https://pintia.cn/problem-sets/994805342720868352/problems/994805352925609984
+        public static int GetDigitsSum(int input)
         {
-            if (input <= 1)
+            int result = 0;
+            if (input == 0)
             {
-                return false;
+                return 0;
             }
-            for (int i = 2; i <= Math.Sqrt(input); i++)
+            while (input != 0)
             {
-                if (input % i == 0)
-                {
-                    return false;
-                }
+                result += input % 10;
+                input /= 10;
             }
-            return true;
+            return result;
         }
         public static void Main()
         {
-            Dictionary<string, int> rankList = new Dictionary<string, int>();
-            int count = int.Parse(Console.ReadLine());
-            for (int i = 0; i < count; i++)
+            Console.ReadLine();
+            string[] inputs = Console.ReadLine().Split();
+            int[] friendIDs = new int[40];
+            int friendID = 0;
+            int count = 0;
+            foreach (var input in inputs)
             {
-                rankList.Add(Console.ReadLine(), i + 1);
-            }
-            count = int.Parse(Console.ReadLine());
-            string queryID;
-            for (int i = 0; i < count; i++)
-            {
-                queryID = Console.ReadLine();
-                if (!rankList.ContainsKey(queryID))
+                friendID = GetDigitsSum(int.Parse(input));
+                if (friendIDs[friendID] != 1)
                 {
-                    Console.WriteLine("{0}: Are you kidding?", queryID);
+                    friendIDs[friendID] = 1;
+                    count++;
                 }
-                else
+            }
+            Console.WriteLine(count);
+            for (int i = 0; i < friendIDs.Length; i++)
+            {
+                if (friendIDs[i] == 1)
                 {
-                    if (rankList[queryID] == -1)
-                    {
-                        Console.WriteLine("{0}: Checked", queryID);
-                        continue;
-                    }
-                    if (rankList[queryID] == 1)
-                    {
-                        Console.WriteLine("{0}: Mystery Award", queryID);
-                    }
-                    else
-                    {
-                        if (IsPrime(rankList[queryID]))
-                        {
-                            Console.WriteLine("{0}: Minion", queryID);
-                        }
-                        else
-                        {
-                            Console.WriteLine("{0}: Chocolate", queryID);
-                        }
-                    }
-                    rankList[queryID] = -1;
+                    count--;
+                    Console.Write(count == 0 ? i.ToString() : i + " ");
                 }
             }
         }
