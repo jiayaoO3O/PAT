@@ -29,4 +29,5 @@
 | 1112 |  20  | [Stucked Keyboard](https://jiayaoo3o.github.io/2019/05/01/1112-Stucked-Keyboard/) |
 | 1116 |  20  | [Come on! Let's C](https://jiayaoo3o.github.io/2019/05/03/1116-Come-on-Let-s-C/) |
 | 1120 |  20  | [Friend Numbers](https://jiayaoo3o.github.io/2019/05/03/1120-Friend-Numbers/) |
+| 1124 |  20  | [Raffle for Weibo Followers](https://jiayaoo3o.github.io/2019/05/04/1124-Raffle-for-Weibo-Followers/) |
 

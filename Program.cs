@@ -1261,43 +1261,79 @@ namespace PAT
 
         //1120 Friend Numbers
         //https://pintia.cn/problem-sets/994805342720868352/problems/994805352925609984
-        public static int GetDigitsSum(int input)
-        {
-            int result = 0;
-            if (input == 0)
-            {
-                return 0;
-            }
-            while (input != 0)
-            {
-                result += input % 10;
-                input /= 10;
-            }
-            return result;
-        }
+        // public static int GetDigitsSum(int input)
+        // {
+        //     int result = 0;
+        //     if (input == 0)
+        //     {
+        //         return 0;
+        //     }
+        //     while (input != 0)
+        //     {
+        //         result += input % 10;
+        //         input /= 10;
+        //     }
+        //     return result;
+        // }
+        // public static void Main()
+        // {
+        //     Console.ReadLine();
+        //     string[] inputs = Console.ReadLine().Split();
+        //     int[] friendIDs = new int[40];
+        //     int friendID = 0;
+        //     int count = 0;
+        //     foreach (var input in inputs)
+        //     {
+        //         friendID = GetDigitsSum(int.Parse(input));
+        //         if (friendIDs[friendID] != 1)
+        //         {
+        //             friendIDs[friendID] = 1;
+        //             count++;
+        //         }
+        //     }
+        //     Console.WriteLine(count);
+        //     for (int i = 0; i < friendIDs.Length; i++)
+        //     {
+        //         if (friendIDs[i] == 1)
+        //         {
+        //             count--;
+        //             Console.Write(count == 0 ? i.ToString() : i + " ");
+        //         }
+        //     }
+        // }
+
+        //1124 Raffle for Weibo Followers
+        //https://pintia.cn/problem-sets/994805342720868352/problems/994805350803292160
         public static void Main()
         {
-            Console.ReadLine();
-            string[] inputs = Console.ReadLine().Split();
-            int[] friendIDs = new int[40];
-            int friendID = 0;
-            int count = 0;
-            foreach (var input in inputs)
+            string line = Console.ReadLine();
+            int totalForwards = int.Parse(line.Split()[0]);
+            int skipNumber = int.Parse(line.Split()[1]);
+            int firstWinner = int.Parse(line.Split()[2]);
+            if (totalForwards < firstWinner)
             {
-                friendID = GetDigitsSum(int.Parse(input));
-                if (friendIDs[friendID] != 1)
-                {
-                    friendIDs[friendID] = 1;
-                    count++;
-                }
+                Console.WriteLine("Keep going...");
             }
-            Console.WriteLine(count);
-            for (int i = 0; i < friendIDs.Length; i++)
+            else
             {
-                if (friendIDs[i] == 1)
+                List<string> winners = new List<string>();
+                string follower;
+                for (int i = 1; i <= totalForwards; i++)
                 {
-                    count--;
-                    Console.Write(count == 0 ? i.ToString() : i + " ");
+                    follower = Console.ReadLine();
+                    if (i == firstWinner)
+                    {
+                        if (winners.Contains(follower))
+                        {
+                            firstWinner += 1;
+                        }
+                        else
+                        {
+                            winners.Add(follower);
+                            Console.WriteLine(follower);
+                            firstWinner += skipNumber;
+                        }
+                    }
                 }
             }
         }
