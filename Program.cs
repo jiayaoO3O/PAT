@@ -1304,37 +1304,75 @@ namespace PAT
 
         //1124 Raffle for Weibo Followers
         //https://pintia.cn/problem-sets/994805342720868352/problems/994805350803292160
+        // public static void Main()
+        // {
+        //     string line = Console.ReadLine();
+        //     int totalForwards = int.Parse(line.Split()[0]);
+        //     int skipNumber = int.Parse(line.Split()[1]);
+        //     int firstWinner = int.Parse(line.Split()[2]);
+        //     if (totalForwards < firstWinner)
+        //     {
+        //         Console.WriteLine("Keep going...");
+        //     }
+        //     else
+        //     {
+        //         List<string> winners = new List<string>();
+        //         string follower;
+        //         for (int i = 1; i <= totalForwards; i++)
+        //         {
+        //             follower = Console.ReadLine();
+        //             if (i == firstWinner)
+        //             {
+        //                 if (winners.Contains(follower))
+        //                 {
+        //                     firstWinner += 1;
+        //                 }
+        //                 else
+        //                 {
+        //                     winners.Add(follower);
+        //                     Console.WriteLine(follower);
+        //                     firstWinner += skipNumber;
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
+
+        //1128 N Queens Puzzle
+        //https://pintia.cn/problem-sets/994805342720868352/problems/994805348915855360
+        public static bool IsNQueensPuzzleSolution(string chessInfo)
+        {
+            string[] chessBoard = chessInfo.Split();
+            int queensCount = int.Parse(chessBoard[0].ToString());
+            int[] rows = new int[queensCount + 1];
+            int[] columns = new int[queensCount + 1];
+            int[] upDiagonal = new int[2 * queensCount];
+            int[] downDiagonal = new int[2 * queensCount + 1];
+            for (int i = 1; i < chessBoard.Length; i++)
+            {
+                int row = int.Parse(chessBoard[i].ToString());
+                int column = i;
+                if (rows[row] == -1 || columns[column] == -1 || upDiagonal[queensCount + row - column] == -1 || downDiagonal[row + column] == -1)
+                {
+                    return false;
+                }
+                else
+                {
+                    rows[row] = -1;
+                    columns[column] = -1;
+                    upDiagonal[queensCount + (row - column)] = -1;
+                    downDiagonal[row + column] = -1;
+                }
+            }
+            return true;
+        }
         public static void Main()
         {
-            string line = Console.ReadLine();
-            int totalForwards = int.Parse(line.Split()[0]);
-            int skipNumber = int.Parse(line.Split()[1]);
-            int firstWinner = int.Parse(line.Split()[2]);
-            if (totalForwards < firstWinner)
+            int lines = int.Parse(Console.ReadLine());
+            for (int i = 0; i < lines; i++)
             {
-                Console.WriteLine("Keep going...");
-            }
-            else
-            {
-                List<string> winners = new List<string>();
-                string follower;
-                for (int i = 1; i <= totalForwards; i++)
-                {
-                    follower = Console.ReadLine();
-                    if (i == firstWinner)
-                    {
-                        if (winners.Contains(follower))
-                        {
-                            firstWinner += 1;
-                        }
-                        else
-                        {
-                            winners.Add(follower);
-                            Console.WriteLine(follower);
-                            firstWinner += skipNumber;
-                        }
-                    }
-                }
+                string chessInfo = Console.ReadLine();
+                Console.WriteLine(IsNQueensPuzzleSolution(chessInfo) ? "YES" : "NO");
             }
         }
     }
