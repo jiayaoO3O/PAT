@@ -1340,39 +1340,53 @@ namespace PAT
 
         //1128 N Queens Puzzle
         //https://pintia.cn/problem-sets/994805342720868352/problems/994805348915855360
-        public static bool IsNQueensPuzzleSolution(string chessInfo)
-        {
-            string[] chessBoard = chessInfo.Split();
-            int queensCount = int.Parse(chessBoard[0].ToString());
-            int[] rows = new int[queensCount + 1];
-            int[] columns = new int[queensCount + 1];
-            int[] upDiagonal = new int[2 * queensCount];
-            int[] downDiagonal = new int[2 * queensCount + 1];
-            for (int i = 1; i < chessBoard.Length; i++)
-            {
-                int row = int.Parse(chessBoard[i].ToString());
-                int column = i;
-                if (rows[row] == -1 || columns[column] == -1 || upDiagonal[queensCount + row - column] == -1 || downDiagonal[row + column] == -1)
-                {
-                    return false;
-                }
-                else
-                {
-                    rows[row] = -1;
-                    columns[column] = -1;
-                    upDiagonal[queensCount + (row - column)] = -1;
-                    downDiagonal[row + column] = -1;
-                }
-            }
-            return true;
-        }
+        // public static bool IsNQueensPuzzleSolution(string chessInfo)
+        // {
+        //     string[] chessBoard = chessInfo.Split();
+        //     int queensCount = int.Parse(chessBoard[0].ToString());
+        //     int[] rows = new int[queensCount + 1];
+        //     int[] columns = new int[queensCount + 1];
+        //     int[] upDiagonal = new int[2 * queensCount];
+        //     int[] downDiagonal = new int[2 * queensCount + 1];
+        //     for (int i = 1; i < chessBoard.Length; i++)
+        //     {
+        //         int row = int.Parse(chessBoard[i].ToString());
+        //         int column = i;
+        //         if (rows[row] == -1 || columns[column] == -1 || upDiagonal[queensCount + row - column] == -1 || downDiagonal[row + column] == -1)
+        //         {
+        //             return false;
+        //         }
+        //         else
+        //         {
+        //             rows[row] = -1;
+        //             columns[column] = -1;
+        //             upDiagonal[queensCount + (row - column)] = -1;
+        //             downDiagonal[row + column] = -1;
+        //         }
+        //     }
+        //     return true;
+        // }
+        // public static void Main()
+        // {
+        //     int lines = int.Parse(Console.ReadLine());
+        //     for (int i = 0; i < lines; i++)
+        //     {
+        //         string chessInfo = Console.ReadLine();
+        //         Console.WriteLine(IsNQueensPuzzleSolution(chessInfo) ? "YES" : "NO");
+        //     }
+        // }
+
+        //1132 Cut Integer
+        //https://pintia.cn/problem-sets/994805342720868352/problems/994805347145859072
         public static void Main()
         {
-            int lines = int.Parse(Console.ReadLine());
-            for (int i = 0; i < lines; i++)
+            int count = int.Parse(Console.ReadLine());
+            for (int i = 0; i < count; i++)
             {
-                string chessInfo = Console.ReadLine();
-                Console.WriteLine(IsNQueensPuzzleSolution(chessInfo) ? "YES" : "NO");
+                string input = Console.ReadLine();
+                int firstPart = int.Parse(input.Substring(0, input.Length / 2));
+                int secondPart = int.Parse(input.Substring(input.Length / 2, input.Length / 2));
+                Console.WriteLine(secondPart != 0 && int.Parse(input) % (firstPart * secondPart) == 0 ? "Yes" : "No");
             }
         }
     }
