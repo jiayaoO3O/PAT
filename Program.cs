@@ -1378,16 +1378,55 @@ namespace PAT
 
         //1132 Cut Integer
         //https://pintia.cn/problem-sets/994805342720868352/problems/994805347145859072
+        // public static void Main()
+        // {
+        //     int count = int.Parse(Console.ReadLine());
+        //     for (int i = 0; i < count; i++)
+        //     {
+        //         string input = Console.ReadLine();
+        //         int firstPart = int.Parse(input.Substring(0, input.Length / 2));
+        //         int secondPart = int.Parse(input.Substring(input.Length / 2, input.Length / 2));
+        //         Console.WriteLine(secondPart != 0 && int.Parse(input) % (firstPart * secondPart) == 0 ? "Yes" : "No");
+        //     }
+        // }
+
+        //1136 A Delayed Palindrome
+        //https://pintia.cn/problem-sets/994805342720868352/problems/994805345732378624
+        public static string Reverse(string input)
+        {
+            char[] num = input.ToCharArray();
+            Array.Reverse(num);
+            return new string(num);
+        }
+        public static string AddStrNumber(string input, string reversed)
+        {
+            string sum = "";
+            int flag = 0;
+            for (int i = input.Length - 1; i >= 0; i--)
+            {
+                sum = (((int)input[i] - 48 + (int)reversed[i] - 48 + flag) % 10) + sum;
+                flag = ((int)input[i] - 48 + (int)reversed[i] - 48 + flag) / 10;
+            }
+            return flag == 1 ? "1" + sum : sum;
+        }
         public static void Main()
         {
-            int count = int.Parse(Console.ReadLine());
-            for (int i = 0; i < count; i++)
+            string input = Console.ReadLine();
+            string sum = "";
+            string reversed;
+            for (int i = 0; i < 10; i++)
             {
-                string input = Console.ReadLine();
-                int firstPart = int.Parse(input.Substring(0, input.Length / 2));
-                int secondPart = int.Parse(input.Substring(input.Length / 2, input.Length / 2));
-                Console.WriteLine(secondPart != 0 && int.Parse(input) % (firstPart * secondPart) == 0 ? "Yes" : "No");
+                reversed = Reverse(input);
+                if (input == reversed)
+                {
+                    Console.WriteLine("{0} is a palindromic number.", input);
+                    return;
+                }
+                sum = AddStrNumber(input, reversed);
+                Console.WriteLine("{0} + {1} = {2}", input, reversed, sum);
+                input = sum;
             }
+            Console.WriteLine("Not found in 10 iterations.");
         }
     }
 }

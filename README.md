@@ -32,4 +32,5 @@
 | 1124 |  20  | [Raffle for Weibo Followers](https://jiayaoo3o.github.io/2019/05/04/1124-Raffle-for-Weibo-Followers/) |
 | 1128 |  20  | [N Queens Puzzle](https://jiayaoo3o.github.io/2019/05/05/1128-N-Queens-Puzzle/) |
 | 1132 |  20  | [Cut Integer](https://jiayaoo3o.github.io/2019/05/06/1132-Cut-Integer/) |
+| 1136 |  20  | [A Delayed Palindrome](https://jiayaoo3o.github.io/2019/05/06/1136-A-Delayed-Palindrome/) |
 
