@@ -33,4 +33,5 @@
 | 1128 |  20  | [N Queens Puzzle](https://jiayaoo3o.github.io/2019/05/05/1128-N-Queens-Puzzle/) |
 | 1132 |  20  | [Cut Integer](https://jiayaoo3o.github.io/2019/05/06/1132-Cut-Integer/) |
 | 1136 |  20  | [A Delayed Palindrome](https://jiayaoo3o.github.io/2019/05/06/1136-A-Delayed-Palindrome/) |
+| 1140 |  20  | [Look-and-say Sequence](https://jiayaoo3o.github.io/2019/05/09/1140-Look-and-say-Sequence/) |
 

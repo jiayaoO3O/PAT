@@ -1392,41 +1392,71 @@ namespace PAT
 
         //1136 A Delayed Palindrome
         //https://pintia.cn/problem-sets/994805342720868352/problems/994805345732378624
-        public static string Reverse(string input)
-        {
-            char[] num = input.ToCharArray();
-            Array.Reverse(num);
-            return new string(num);
-        }
-        public static string AddStrNumber(string input, string reversed)
-        {
-            string sum = "";
-            int flag = 0;
-            for (int i = input.Length - 1; i >= 0; i--)
-            {
-                sum = (((int)input[i] - 48 + (int)reversed[i] - 48 + flag) % 10) + sum;
-                flag = ((int)input[i] - 48 + (int)reversed[i] - 48 + flag) / 10;
-            }
-            return flag == 1 ? "1" + sum : sum;
-        }
+        // public static string Reverse(string input)
+        // {
+        //     char[] num = input.ToCharArray();
+        //     Array.Reverse(num);
+        //     return new string(num);
+        // }
+        // public static string AddStrNumber(string input, string reversed)
+        // {
+        //     string sum = "";
+        //     int flag = 0;
+        //     for (int i = input.Length - 1; i >= 0; i--)
+        //     {
+        //         sum = (((int)input[i] - 48 + (int)reversed[i] - 48 + flag) % 10) + sum;
+        //         flag = ((int)input[i] - 48 + (int)reversed[i] - 48 + flag) / 10;
+        //     }
+        //     return flag == 1 ? "1" + sum : sum;
+        // }
+        // public static void Main()
+        // {
+        //     string input = Console.ReadLine();
+        //     string sum = "";
+        //     string reversed;
+        //     for (int i = 0; i < 10; i++)
+        //     {
+        //         reversed = Reverse(input);
+        //         if (input == reversed)
+        //         {
+        //             Console.WriteLine("{0} is a palindromic number.", input);
+        //             return;
+        //         }
+        //         sum = AddStrNumber(input, reversed);
+        //         Console.WriteLine("{0} + {1} = {2}", input, reversed, sum);
+        //         input = sum;
+        //     }
+        //     Console.WriteLine("Not found in 10 iterations.");
+        // }
+
+        //1140 Look-and-say Sequence
+        //https://pintia.cn/problem-sets/994805342720868352/problems/994805344490864640
         public static void Main()
         {
-            string input = Console.ReadLine();
-            string sum = "";
-            string reversed;
-            for (int i = 0; i < 10; i++)
+            string[] lines = Console.ReadLine().Split();
+            string input = lines[0];
+            int count = int.Parse(lines[1]);
+            System.Text.StringBuilder result = new System.Text.StringBuilder("");
+            while (--count > 0)
             {
-                reversed = Reverse(input);
-                if (input == reversed)
+                int nowCount = 1;
+                for (int i = 1; i < input.Length; i++)
                 {
-                    Console.WriteLine("{0} is a palindromic number.", input);
-                    return;
+                    if (input[i] == input[i - 1])
+                    {
+                        nowCount++;
+                    }
+                    else
+                    {
+                        result.Append(input[i - 1] + nowCount.ToString());
+                        nowCount = 1;
+                    }
                 }
-                sum = AddStrNumber(input, reversed);
-                Console.WriteLine("{0} + {1} = {2}", input, reversed, sum);
-                input = sum;
+                result.Append(input[input.Length - 1] + nowCount.ToString());
+                input = result.ToString();
+                result.Clear();
             }
-            Console.WriteLine("Not found in 10 iterations.");
+            Console.WriteLine(input);
         }
     }
 }
