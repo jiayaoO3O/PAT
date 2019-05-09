@@ -1461,18 +1461,50 @@ namespace PAT
 
         //1144 The Missing Number
         //https://pintia.cn/problem-sets/994805342720868352/problems/994805343463260160
+        // public static void Main()
+        // {
+        //     Console.ReadLine();
+        //     HashSet<string> inputsInfo = new HashSet<string>(Console.ReadLine().Split());
+        //     for (int i = 1; ; i++)
+        //     {
+        //         if (!inputsInfo.Contains(i.ToString()))
+        //         {
+        //             Console.WriteLine(i);
+        //             return;
+        //         }
+        //     }
+        // }
+
+        //1152 Google Recruitment
+        //https://pintia.cn/problem-sets/994805342720868352/problems/1071785055080476672
+        public static bool IsPrime(int input)
+        {
+            if (input <= 1)
+            {
+                return false;
+            }
+            for (int i = 2; i <= Math.Sqrt(input); i++)
+            {
+                if (input % i == 0)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
         public static void Main()
         {
-            Console.ReadLine();
-            HashSet<string> inputsInfo = new HashSet<string>(Console.ReadLine().Split());
-            for (int i = 1; ; i++)
+            int primeLength = int.Parse(Console.ReadLine().Split()[1]);
+            string input = Console.ReadLine();
+            for (int i = 0; i <= input.Length - primeLength; i++)
             {
-                if (!inputsInfo.Contains(i.ToString()))
+                if (IsPrime(int.Parse(input.Substring(i, primeLength))))
                 {
-                    Console.WriteLine(i);
+                    Console.WriteLine(input.Substring(i, primeLength));
                     return;
                 }
             }
+            Console.WriteLine("404");
         }
     }
 }

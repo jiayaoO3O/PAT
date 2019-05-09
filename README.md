@@ -35,4 +35,5 @@
 | 1136 |  20  | [A Delayed Palindrome](https://jiayaoo3o.github.io/2019/05/06/1136-A-Delayed-Palindrome/) |
 | 1140 |  20  | [Look-and-say Sequence](https://jiayaoo3o.github.io/2019/05/09/1140-Look-and-say-Sequence/) |
 | 1144 |  20  | [The Missing Number](https://jiayaoo3o.github.io/2019/05/09/1144-The-Missing-Number/) |
+| 1152 |  20  | [Google Recruitment](https://jiayaoo3o.github.io/2019/05/09/1152-Google-Recruitment/) |
 
