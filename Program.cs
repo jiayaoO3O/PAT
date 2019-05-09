@@ -1431,32 +1431,48 @@ namespace PAT
 
         //1140 Look-and-say Sequence
         //https://pintia.cn/problem-sets/994805342720868352/problems/994805344490864640
+        // public static void Main()
+        // {
+        //     string[] lines = Console.ReadLine().Split();
+        //     string input = lines[0];
+        //     int count = int.Parse(lines[1]);
+        //     System.Text.StringBuilder result = new System.Text.StringBuilder("");
+        //     while (--count > 0)
+        //     {
+        //         int nowCount = 1;
+        //         for (int i = 1; i < input.Length; i++)
+        //         {
+        //             if (input[i] == input[i - 1])
+        //             {
+        //                 nowCount++;
+        //             }
+        //             else
+        //             {
+        //                 result.Append(input[i - 1] + nowCount.ToString());
+        //                 nowCount = 1;
+        //             }
+        //         }
+        //         result.Append(input[input.Length - 1] + nowCount.ToString());
+        //         input = result.ToString();
+        //         result.Clear();
+        //     }
+        //     Console.WriteLine(input);
+        // }
+
+        //1144 The Missing Number
+        //https://pintia.cn/problem-sets/994805342720868352/problems/994805343463260160
         public static void Main()
         {
-            string[] lines = Console.ReadLine().Split();
-            string input = lines[0];
-            int count = int.Parse(lines[1]);
-            System.Text.StringBuilder result = new System.Text.StringBuilder("");
-            while (--count > 0)
+            Console.ReadLine();
+            HashSet<string> inputsInfo = new HashSet<string>(Console.ReadLine().Split());
+            for (int i = 1; ; i++)
             {
-                int nowCount = 1;
-                for (int i = 1; i < input.Length; i++)
+                if (!inputsInfo.Contains(i.ToString()))
                 {
-                    if (input[i] == input[i - 1])
-                    {
-                        nowCount++;
-                    }
-                    else
-                    {
-                        result.Append(input[i - 1] + nowCount.ToString());
-                        nowCount = 1;
-                    }
+                    Console.WriteLine(i);
+                    return;
                 }
-                result.Append(input[input.Length - 1] + nowCount.ToString());
-                input = result.ToString();
-                result.Clear();
             }
-            Console.WriteLine(input);
         }
     }
 }
