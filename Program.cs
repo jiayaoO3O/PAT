@@ -1477,34 +1477,62 @@ namespace PAT
 
         //1152 Google Recruitment
         //https://pintia.cn/problem-sets/994805342720868352/problems/1071785055080476672
-        public static bool IsPrime(int input)
-        {
-            if (input <= 1)
-            {
-                return false;
-            }
-            for (int i = 2; i <= Math.Sqrt(input); i++)
-            {
-                if (input % i == 0)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
+        // public static bool IsPrime(int input)
+        // {
+        //     if (input <= 1)
+        //     {
+        //         return false;
+        //     }
+        //     for (int i = 2; i <= Math.Sqrt(input); i++)
+        //     {
+        //         if (input % i == 0)
+        //         {
+        //             return false;
+        //         }
+        //     }
+        //     return true;
+        // }
+        // public static void Main()
+        // {
+        //     int primeLength = int.Parse(Console.ReadLine().Split()[1]);
+        //     string input = Console.ReadLine();
+        //     for (int i = 0; i <= input.Length - primeLength; i++)
+        //     {
+        //         if (IsPrime(int.Parse(input.Substring(i, primeLength))))
+        //         {
+        //             Console.WriteLine(input.Substring(i, primeLength));
+        //             return;
+        //         }
+        //     }
+        //     Console.WriteLine("404");
+        // }
+
+        //1002 A+B for Polynomials
+        //https://pintia.cn/problem-sets/994805342720868352/problems/994805526272000000
         public static void Main()
         {
-            int primeLength = int.Parse(Console.ReadLine().Split()[1]);
-            string input = Console.ReadLine();
-            for (int i = 0; i <= input.Length - primeLength; i++)
+            string[] A = Console.ReadLine().Split();
+            string[] B = Console.ReadLine().Split();
+            double[] polynomialInfo = new double[1001];
+            for (int i = 1; i < A.Length - 1; i = i + 2)
             {
-                if (IsPrime(int.Parse(input.Substring(i, primeLength))))
+                polynomialInfo[int.Parse(A[i])] = double.Parse(A[i + 1]);
+            }
+            for (int i = 1; i < B.Length - 1; i += 2)
+            {
+                polynomialInfo[int.Parse(B[i])] += double.Parse(B[i + 1]);
+            }
+            int count = 0;
+            string result = "";
+            for (int i = 0; i < polynomialInfo.Length; i++)
+            {
+                if (polynomialInfo[i] != 0)
                 {
-                    Console.WriteLine(input.Substring(i, primeLength));
-                    return;
+                    result = " " + i + " " + polynomialInfo[i].ToString("0.0") + result;
+                    count++;
                 }
             }
-            Console.WriteLine("404");
+            Console.Write(count + result);
         }
     }
 }
