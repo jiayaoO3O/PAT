@@ -1537,30 +1537,69 @@ namespace PAT
 
         //1006 Sign In and Sign Out
         //https://pintia.cn/problem-sets/994805342720868352/problems/994805516654460928
+        // public static void Main()
+        // {
+        //     int count = int.Parse(Console.ReadLine());
+        //     string[] recordsID = new string[count];
+        //     string[] signInRecords = new string[count];
+        //     string[] signOutRecords = new string[count];
+        //     int firstPerson = 0;
+        //     int lastPerson = 0;
+        //     for (int i = 0; i < count; i++)
+        //     {
+        //         string recode = Console.ReadLine();
+        //         recordsID[i] = recode.Split()[0];
+        //         signInRecords[i] = recode.Split()[1];
+        //         signOutRecords[i] = recode.Split()[2];
+        //         if (DateTime.Parse(signInRecords[i]) < DateTime.Parse(signInRecords[firstPerson]))
+        //         {
+        //             firstPerson = i;
+        //         }
+        //         if (DateTime.Parse(signOutRecords[i]) > DateTime.Parse(signOutRecords[lastPerson]))
+        //         {
+        //             lastPerson = i;
+        //         }
+        //     }
+        //     Console.WriteLine(recordsID[firstPerson] + " " + recordsID[lastPerson]);
+        // }
+
+        //1007 Maximum Subsequence Sum
+        //https://pintia.cn/problem-sets/994805342720868352/problems/994805514284679168
         public static void Main()
         {
             int count = int.Parse(Console.ReadLine());
-            string[] recordsID = new string[count];
-            string[] signInRecords = new string[count];
-            string[] signOutRecords = new string[count];
-            int firstPerson = 0;
-            int lastPerson = 0;
+            string[] lines = Console.ReadLine().Split();
+            int[] inputs = new int[count];
+            int begin = 0, end = 0, temp = 0;
+            int sum = 0;
+            int max = -1;
             for (int i = 0; i < count; i++)
             {
-                string recode = Console.ReadLine();
-                recordsID[i] = recode.Split()[0];
-                signInRecords[i] = recode.Split()[1];
-                signOutRecords[i] = recode.Split()[2];
-                if (DateTime.Parse(signInRecords[i]) < DateTime.Parse(signInRecords[firstPerson]))
+                inputs[i] = int.Parse(lines[i]);
+                sum = sum + inputs[i];
+                if (sum < 0)
                 {
-                    firstPerson = i;
+                    sum = 0;
+                    temp = i + 1;
                 }
-                if (DateTime.Parse(signOutRecords[i]) > DateTime.Parse(signOutRecords[lastPerson]))
+                else
                 {
-                    lastPerson = i;
+                    if (sum > max)
+                    {
+                        max = sum;
+                        begin = temp;
+                        end = i;
+                    }
                 }
             }
-            Console.WriteLine(recordsID[firstPerson] + " " + recordsID[lastPerson]);
+            if (max < 0)
+            {
+                Console.WriteLine("{0} {1} {2}", 0, inputs[0], inputs[count - 1]);
+            }
+            else
+            {
+                Console.WriteLine("{0} {1} {2}", max, inputs[begin], inputs[end]);
+            }
         }
     }
 }
