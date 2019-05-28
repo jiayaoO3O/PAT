@@ -7,6 +7,7 @@
 | 1001 |  20  | [A+B Format](https://jiayaoo3o.github.io/2019/04/16/1001-A-B-Format/) |
 | 1002 |  25  | [A+B for Polynomials](https://jiayaoo3o.github.io/2019/05/10/1002-A-B-for-Polynomials/) |
 | 1005 |  20  | [Spell It Right](https://jiayaoo3o.github.io/2019/04/16/1005-Spell-It-Right/) |
+| 1006 |  25  | [Sign In and Sign Out](https://jiayaoo3o.github.io/2019/05/28/1006-Sign-In-and-Sign-Out/) |
 | 1008 |  20  | [Elevator](https://jiayaoo3o.github.io/2019/04/16/1008-Elevator/) |
 | 1011 |  20  | [World Cup Betting](https://jiayaoo3o.github.io/2019/04/16/1011-World-Cup-Betting/) |
 | 1015 |  20  | [Reversible Primes](https://jiayaoo3o.github.io/2019/04/16/1015-Reversible-Primes/) |

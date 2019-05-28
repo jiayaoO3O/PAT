@@ -1509,30 +1509,58 @@ namespace PAT
 
         //1002 A+B for Polynomials
         //https://pintia.cn/problem-sets/994805342720868352/problems/994805526272000000
+        // public static void Main()
+        // {
+        //     string[] A = Console.ReadLine().Split();
+        //     string[] B = Console.ReadLine().Split();
+        //     double[] polynomialInfo = new double[1001];
+        //     for (int i = 1; i < A.Length - 1; i = i + 2)
+        //     {
+        //         polynomialInfo[int.Parse(A[i])] = double.Parse(A[i + 1]);
+        //     }
+        //     for (int i = 1; i < B.Length - 1; i += 2)
+        //     {
+        //         polynomialInfo[int.Parse(B[i])] += double.Parse(B[i + 1]);
+        //     }
+        //     int count = 0;
+        //     string result = "";
+        //     for (int i = 0; i < polynomialInfo.Length; i++)
+        //     {
+        //         if (polynomialInfo[i] != 0)
+        //         {
+        //             result = " " + i + " " + polynomialInfo[i].ToString("0.0") + result;
+        //             count++;
+        //         }
+        //     }
+        //     Console.Write(count + result);
+        // }
+
+        //1006 Sign In and Sign Out
+        //https://pintia.cn/problem-sets/994805342720868352/problems/994805516654460928
         public static void Main()
         {
-            string[] A = Console.ReadLine().Split();
-            string[] B = Console.ReadLine().Split();
-            double[] polynomialInfo = new double[1001];
-            for (int i = 1; i < A.Length - 1; i = i + 2)
+            int count = int.Parse(Console.ReadLine());
+            string[] recordsID = new string[count];
+            string[] signInRecords = new string[count];
+            string[] signOutRecords = new string[count];
+            int firstPerson = 0;
+            int lastPerson = 0;
+            for (int i = 0; i < count; i++)
             {
-                polynomialInfo[int.Parse(A[i])] = double.Parse(A[i + 1]);
-            }
-            for (int i = 1; i < B.Length - 1; i += 2)
-            {
-                polynomialInfo[int.Parse(B[i])] += double.Parse(B[i + 1]);
-            }
-            int count = 0;
-            string result = "";
-            for (int i = 0; i < polynomialInfo.Length; i++)
-            {
-                if (polynomialInfo[i] != 0)
+                string recode = Console.ReadLine();
+                recordsID[i] = recode.Split()[0];
+                signInRecords[i] = recode.Split()[1];
+                signOutRecords[i] = recode.Split()[2];
+                if (DateTime.Parse(signInRecords[i]) < DateTime.Parse(signInRecords[firstPerson]))
                 {
-                    result = " " + i + " " + polynomialInfo[i].ToString("0.0") + result;
-                    count++;
+                    firstPerson = i;
+                }
+                if (DateTime.Parse(signOutRecords[i]) > DateTime.Parse(signOutRecords[lastPerson]))
+                {
+                    lastPerson = i;
                 }
             }
-            Console.Write(count + result);
+            Console.WriteLine(recordsID[firstPerson] + " " + recordsID[lastPerson]);
         }
     }
 }
