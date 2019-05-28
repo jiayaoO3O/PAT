@@ -1565,41 +1565,85 @@ namespace PAT
 
         //1007 Maximum Subsequence Sum
         //https://pintia.cn/problem-sets/994805342720868352/problems/994805514284679168
+        // public static void Main()
+        // {
+        //     int count = int.Parse(Console.ReadLine());
+        //     string[] lines = Console.ReadLine().Split();
+        //     int[] inputs = new int[count];
+        //     int begin = 0, end = 0, temp = 0;
+        //     int sum = 0;
+        //     int max = -1;
+        //     for (int i = 0; i < count; i++)
+        //     {
+        //         inputs[i] = int.Parse(lines[i]);
+        //         sum = sum + inputs[i];
+        //         if (sum < 0)
+        //         {
+        //             sum = 0;
+        //             temp = i + 1;
+        //         }
+        //         else
+        //         {
+        //             if (sum > max)
+        //             {
+        //                 max = sum;
+        //                 begin = temp;
+        //                 end = i;
+        //             }
+        //         }
+        //     }
+        //     if (max < 0)
+        //     {
+        //         Console.WriteLine("{0} {1} {2}", 0, inputs[0], inputs[count - 1]);
+        //     }
+        //     else
+        //     {
+        //         Console.WriteLine("{0} {1} {2}", max, inputs[begin], inputs[end]);
+        //     }
+        // }
+
+        //1009 Product of Polynomials
+        //https://pintia.cn/problem-sets/994805342720868352/problems/994805509540921344
         public static void Main()
         {
-            int count = int.Parse(Console.ReadLine());
-            string[] lines = Console.ReadLine().Split();
-            int[] inputs = new int[count];
-            int begin = 0, end = 0, temp = 0;
-            int sum = 0;
-            int max = -1;
-            for (int i = 0; i < count; i++)
+            var A = new Dictionary<int, double>();
+            var B = new Dictionary<int, double>();
+            var product = new SortedDictionary<int, double>();
+            string[] inputsA = Console.ReadLine().Split();
+            string[] inputsB = Console.ReadLine().Split();
+            string result = "";
+            for (int i = 1; i < inputsA.Length - 1; i += 2)
             {
-                inputs[i] = int.Parse(lines[i]);
-                sum = sum + inputs[i];
-                if (sum < 0)
+                A.Add(int.Parse(inputsA[i]), double.Parse(inputsA[i + 1]));
+            }
+            for (int i = 1; i < inputsB.Length - 1; i += 2)
+            {
+                B.Add(int.Parse(inputsB[i]), double.Parse(inputsB[i + 1]));
+            }
+            foreach (var a in A)
+            {
+                foreach (var b in B)
                 {
-                    sum = 0;
-                    temp = i + 1;
-                }
-                else
-                {
-                    if (sum > max)
+                    if (!product.ContainsKey(a.Key + b.Key))
                     {
-                        max = sum;
-                        begin = temp;
-                        end = i;
+                        product.Add(a.Key + b.Key, a.Value * b.Value);
+                    }
+                    else
+                    {
+                        product[a.Key + b.Key] += a.Value * b.Value;
                     }
                 }
             }
-            if (max < 0)
+            int count = 0;
+            foreach (var p in product)
             {
-                Console.WriteLine("{0} {1} {2}", 0, inputs[0], inputs[count - 1]);
+                if (Math.Abs(p.Value) >= 0.05)
+                {
+                    result = " " + p.Key + " " + p.Value.ToString("0.0") + result;
+                    count++;
+                }
             }
-            else
-            {
-                Console.WriteLine("{0} {1} {2}", max, inputs[begin], inputs[end]);
-            }
+            Console.WriteLine(count + result);
         }
     }
 }

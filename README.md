@@ -10,6 +10,7 @@
 | 1006 |  25  | [Sign In and Sign Out](https://jiayaoo3o.github.io/2019/05/28/1006-Sign-In-and-Sign-Out/) |
 | 1007 |  25  | [Maximum Subsequence Sum](https://jiayaoo3o.github.io/2019/05/28/1007-Maximum-Subsequence-Sum/) |
 | 1008 |  20  | [Elevator](https://jiayaoo3o.github.io/2019/04/16/1008-Elevator/) |
+| 1009 |  25  | [Product of Polynomials](https://jiayaoo3o.github.io/2019/05/28/1009-Product-of-Polynomials/) |
 | 1011 |  20  | [World Cup Betting](https://jiayaoo3o.github.io/2019/04/16/1011-World-Cup-Betting/) |
 | 1015 |  20  | [Reversible Primes](https://jiayaoo3o.github.io/2019/04/16/1015-Reversible-Primes/) |
 | 1019 |  20  | [General Palindromic Number](https://jiayaoo3o.github.io/2019/04/17/1019-General-Palindromic-Number/) |
